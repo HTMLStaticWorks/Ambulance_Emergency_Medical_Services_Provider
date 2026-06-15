@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance & Emergency Medical Services Provider | Services</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Explore AmbulancePro's medical transport services: BLS, ALS, ICU setups, air transport, neonatal units, and event medical cover. Live FAQ and onboard equipment listing.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">
+        <span>🚑</span> AmbulancePro
+      </a>
+      
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home1.html" class="nav-link">Home1</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="signup.html" class="nav-link">Sign Up</a>
+        
+        <div class="nav-controls">
+          <button id="theme-toggle" class="control-btn" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+            <span class="btn-label">Dark</span>
+          </button>
+          <button id="rtl-toggle" class="control-btn" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-globe"></i>
+            <span class="btn-label">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: SERVICES HERO -->
+  <header class="header-hero" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1200&q=80');">
+    <div class="container header-hero-content">
+      <h1>Our Medical Services</h1>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a> <span>/</span> Services
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 2: SERVICES GRID (6 Cards) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>Emergency & Non-Emergency Medical Transport</h2>
+        <p class="text-muted">A comprehensive range of vehicles tailored for different levels of clinical support.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Card 1: BLS -->
+        <div class="card fade-in-up">
+          <div class="card-icon"><i class="fa-solid fa-kit-medical"></i></div>
+          <h3>Basic Life Support (BLS)</h3>
+          <div class="service-price">₹499 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
+          <p class="text-muted" style="font-size: 0.9rem;">For patients who require simple medical transfer and non-critical monitoring.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Certified emergency EMT</li>
+            <li><i class="fa-solid fa-check"></i> Standard oxygen cylinders</li>
+            <li><i class="fa-solid fa-check"></i> Wheelchair & stretcher support</li>
+          </ul>
+          <a href="signup.html" class="btn btn-primary btn-small">Book Now</a>
+        </div>
+
+        <!-- Card 2: ALS -->
+        <div class="card fade-in-up">
+          <div class="card-icon"><i class="fa-solid fa-user-nurse"></i></div>
+          <h3>Advanced Life Support (ALS)</h3>
+          <div class="service-price">₹999 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
+          <p class="text-muted" style="font-size: 0.9rem;">For patients needing pre-hospital monitoring, IV therapy, and medication.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> 2 Certified EMTs</li>
+            <li><i class="fa-solid fa-check"></i> Vitals monitoring & ECG</li>
+            <li><i class="fa-solid fa-check"></i> Trauma kits & IV lines</li>
+          </ul>
+          <a href="signup.html" class="btn btn-primary btn-small">Book Now</a>
+        </div>
+
+        <!-- Card 3: ICU -->
+        <div class="card fade-in-up">
+          <div class="card-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h3>ICU Ambulance</h3>
+          <div class="service-price">₹1,499 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
+          <p class="text-muted" style="font-size: 0.9rem;">Advanced mobile ICU unit designed for highly critical cardiac or respiratory cases.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> On-board Trauma Doctor</li>
+            <li><i class="fa-solid fa-check"></i> Intubation & Ventilator</li>
+            <li><i class="fa-solid fa-check"></i> Defibrillator & cardiac meds</li>
+          </ul>
+          <a href="signup.html" class="btn btn-primary btn-small">Book Now</a>
+        </div>
+
+        <!-- Card 4: Air Ambulance -->
+        <div class="card fade-in-up">
+          <div class="card-icon"><i class="fa-solid fa-plane-up"></i></div>
+          <h3>Air Ambulance</h3>
+          <div class="service-price">₹15,000 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
+          <p class="text-muted" style="font-size: 0.9rem;">Long-distance critical patient evacuation via medically-configured private aircraft.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Multi-city clearance</li>
+            <li><i class="fa-solid fa-check"></i> Full ICU setups in flight</li>
+            <li><i class="fa-solid fa-check"></i> Dual doctor-flight crew</li>
+          </ul>
+          <a href="signup.html" class="btn btn-primary btn-small">Book Now</a>
+        </div>
+
+        <!-- Card 5: Neonatal Transport -->
+        <div class="card fade-in-up">
+          <div class="card-icon"><i class="fa-solid fa-baby"></i></div>
+          <h3>Neonatal Transport</h3>
+          <div class="service-price">₹799 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
+          <p class="text-muted" style="font-size: 0.9rem;">Specifically built for transfer of newborns requiring incubators and special care.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Neonatal incubator</li>
+            <li><i class="fa-solid fa-check"></i> Pediatric nurse on board</li>
+            <li><i class="fa-solid fa-check"></i> Micro-ventilators</li>
+          </ul>
+          <a href="signup.html" class="btn btn-primary btn-small">Book Now</a>
+        </div>
+
+        <!-- Card 6: Event Medical Cover -->
+        <div class="card fade-in-up">
+          <div class="card-icon"><i class="fa-solid fa-tent-arrow-down-to-line"></i></div>
+          <h3>Event Medical Cover</h3>
+          <div class="service-price">₹2,999 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">/ event day</span></div>
+          <p class="text-muted" style="font-size: 0.9rem;">Stationary medical standbys and response tents for sports events and corporate gathers.</p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Standby paramedic crew</li>
+            <li><i class="fa-solid fa-check"></i> Medical triage tent</li>
+            <li><i class="fa-solid fa-check"></i> First-aid standby vehicles</li>
+          </ul>
+          <a href="signup.html" class="btn btn-primary btn-small">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: IMAGE + EQUIPMENT LIST -->
+  <section class="section section-bg-light" id="equipment">
+    <div class="container">
+      <div class="split-wrap">
+        <div class="split-text fade-in-up">
+          <h2>What's On Board</h2>
+          <p>Every ICU vehicle functions as an extension of a hospital emergency room. Our equipment is checked at the start of every shift to guarantee absolute reliability.</p>
+          
+          <div class="equipment-list-grid">
+            <div class="equipment-item">
+              <i class="fa-solid fa-heart-pulse"></i>
+              <span>Defibrillator</span>
+            </div>
+            <div class="equipment-item">
+              <i class="fa-solid fa-wind"></i>
+              <span>Oxygen cylinders</span>
+            </div>
+            <div class="equipment-item">
+              <i class="fa-solid fa-lungs"></i>
+              <span>Ventilator</span>
+            </div>
+            <div class="equipment-item">
+              <i class="fa-solid fa-dropper"></i>
+              <span>IV administration</span>
+            </div>
+            <div class="equipment-item">
+              <i class="fa-solid fa-bed"></i>
+              <span>Stretcher</span>
+            </div>
+            <div class="equipment-item">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>ECG monitor</span>
+            </div>
+            <div class="equipment-item">
+              <i class="fa-solid fa-pills"></i>
+              <span>Emergency medications</span>
+            </div>
+            <div class="equipment-item">
+              <i class="fa-solid fa-pump-medical"></i>
+              <span>Suction unit</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="split-img fade-in-up">
+          <img src="https://images.unsplash.com/photo-1631815588090-d1bcbe9e0f56?auto=format&fit=crop&w=1200&q=80" alt="Inside ICU medical ambulance setup">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: 4-STEP PROCESS -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>Our Response Protocol</h2>
+        <p class="text-muted">How we coordinate from your first emergency call to hospital arrival.</p>
+      </div>
+
+      <div class="process-steps fade-in-up">
+        <div class="process-step">
+          <div class="process-icon-wrap"><i class="fa-solid fa-phone-volume"></i></div>
+          <h3 class="process-title">1. Call Emergency</h3>
+          <p class="process-desc">Call 108. Dispatchers pinpoint your location.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon-wrap"><i class="fa-solid fa-satellite-dish"></i></div>
+          <h3 class="process-title">2. Dispatch Base</h3>
+          <p class="process-desc">Nearest base activates crew under 30 seconds.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon-wrap"><i class="fa-solid fa-truck-ramp-box"></i></div>
+          <h3 class="process-title">3. En Route</h3>
+          <p class="process-desc">Track vehicle live. Paramedics call to advise.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon-wrap"><i class="fa-solid fa-hospital"></i></div>
+          <h3 class="process-title">4. Hospital Arrival</h3>
+          <p class="process-desc">Direct transit to trauma team with zero delay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: FAQ ACCORDION -->
+  <section class="section section-bg-light" id="faq">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>Frequently Asked Questions</h2>
+        <p class="text-muted">Clear details regarding response zones and booking capabilities.</p>
+      </div>
+
+      <div class="faq-accordion fade-in-up">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            What areas do you cover?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>We provide full city coverage across Chennai, Mumbai, Delhi, Bangalore, Hyderabad, Kolkata, Pune, and Ahmedabad. Our response network includes strategically placed bases to ensure coverage reaches even remote suburbs.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            How fast is your average response time?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>Our average city response time is under 8 minutes. Depending on traffic flow and distance to the nearest base station, response times may vary slightly, but real-time routing systems optimize transit times.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            Do you accept insurance?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>Yes, we partner with major health insurance providers. Upon hospital admission, you can submit the ambulance receipt and invoice to claim cashless coverage or reimbursement according to your policy guidelines.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            Is the ICU ambulance available 24/7?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>Yes, all ICU and Advanced Life Support vehicles operate 24 hours a day, 7 days a week, 365 days a year, with full doctor rotations and telemetry monitors always active.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            Can I pre-book for a scheduled hospital transfer?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>Yes, you can schedule transfers for hospital checkups or discharges up to 30 days in advance. Pre-booked transfers receive prioritized dispatch time guarantees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: SERVICE COVERAGE AREA -->
+  <section class="section" id="coverage">
+    <div class="container">
+      <div class="map-box fade-in-up">
+        <div class="map-info">
+          <h3>National Response Network</h3>
+          <p style="color: var(--gray); margin-bottom: 25px;">We operate dispatch bases across 8 major metropolitan centers. Our telemetry link networks interface directly with regional trauma networks for coordinated arrivals.</p>
+          <div style="font-weight: 700; color: var(--primary);">
+            <i class="fa-solid fa-circle-nodes"></i> Coverage expanding to 50+ cities by 2025
+          </div>
+        </div>
+        
+        <div class="map-pins">
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Chennai</div>
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Mumbai</div>
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Delhi</div>
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Bangalore</div>
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Hyderabad</div>
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Kolkata</div>
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Pune</div>
+          <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Ahmedabad</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED FOOTER -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <h3><span></span>🚑 AmbulancePro</h3>
+        <p>Your trusted emergency medical partner since 2010. Available 24/7, 365 days a year.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">BLS Ambulance</a></li>
+          <li><a href="services.html">ALS Ambulance</a></li>
+          <li><a href="services.html">ICU Transport</a></li>
+          <li><a href="services.html">Air Ambulance</a></li>
+          <li><a href="services.html">Neonatal Care</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>
+            <strong>Emergency:</strong><br>
+            <a href="tel:108" style="color: var(--primary); font-weight:700;">108</a> (Toll-Free)
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>
+            <strong>Email:</strong><br>
+            <a href="mailto:info@ambulancepro.in">info@ambulancepro.in</a>
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>
+            <strong>Address:</strong><br>
+            Chennai, India
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AmbulancePro. All rights reserved.</p>
+      <div class="emergency-footer-badge">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>🔴 EMERGENCY: CALL 108</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

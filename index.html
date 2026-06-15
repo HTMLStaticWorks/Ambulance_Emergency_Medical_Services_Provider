@@ -1,1 +1,384 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance & Emergency Medical Services Provider | Home</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="AmbulancePro provides 24/7, fast, reliable, and life-saving emergency medical transport and ICU services in India. Call 108 for immediate response.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Page Specific Styles for Home Page Hero */
+    .index-hero {
+      height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1587745416684-47953f16f02f?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+    }
+    .index-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(13, 27, 42, 0.8) 0%, rgba(13, 27, 42, 0.4) 100%);
+    }
+    .index-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+    .index-hero h1 {
+      font-size: 3.5rem;
+      color: var(--white);
+      margin-bottom: 20px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    }
+    .index-hero p {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 35px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .index-hero h1 {
+        font-size: 2.5rem;
+      }
+      .index-hero p {
+        font-size: 1.1rem;
+      }
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .hero-btns .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. NAVIGATION BAR -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">
+        <span>🚑</span> AmbulancePro
+      </a>
+      
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home1.html" class="nav-link">Home1</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="signup.html" class="nav-link">Sign Up</a>
+        
+        <div class="nav-controls">
+          <button id="theme-toggle" class="control-btn" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+            <span class="btn-label">Dark</span>
+          </button>
+          <button id="rtl-toggle" class="control-btn" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-globe"></i>
+            <span class="btn-label">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: HERO -->
+  <header class="index-hero" id="home">
+    <div class="index-hero-content">
+      <div class="pulse-badge">
+        <span class="pulse-dot"></span>
+        24/7 EMERGENCY RESPONSE SERVICE
+      </div>
+      <h1>Fast. Reliable. Life-Saving.</h1>
+      <p>India's most trusted emergency medical transport — available 24/7, 365 days. Providing immediate care when every second counts.</p>
+      <div class="hero-btns">
+        <a href="tel:108" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call 108 Now</a>
+        <a href="signup.html" class="btn btn-outline btn-white"><i class="fa-solid fa-ambulance"></i> Book Ambulance</a>
+      </div>
+    </div>
+    <a href="#stats" class="scroll-arrow" aria-label="Scroll down">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </header>
+
+  <!-- SECTION 2: ANIMATED STATS BAR -->
+  <section class="stats-bar" id="stats">
+    <div class="container grid-4">
+      <div class="stat-item">
+        <div class="stat-number" data-target="10000" data-suffix="+">0</div>
+        <div class="stat-label">Patients Saved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="500" data-suffix="+">0</div>
+        <div class="stat-label">Ambulances Fleet</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="24" data-suffix="/7">0</div>
+        <div class="stat-label">Service Available</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="98" data-suffix="%">0</div>
+        <div class="stat-label">Survival Rate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FEATURES GRID -->
+  <section class="section section-bg-light" id="features">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>Advanced Emergency Care</h2>
+        <p class="text-muted">Our fleet is built and staffed to manage any critical situation on the road.</p>
+      </div>
+      
+      <div class="grid-3">
+        <div class="card fade-in-up">
+          <div class="card-icon">
+            <i class="fa-solid fa-location-crosshairs"></i>
+          </div>
+          <h3>GPS Real-Time Tracking</h3>
+          <p class="text-muted">Track your ambulance in real-time from booking to arrival. Complete route transparency for peace of mind.</p>
+        </div>
+        
+        <div class="card fade-in-up">
+          <div class="card-icon">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <h3>Certified Paramedics</h3>
+          <p class="text-muted">Highly trained trauma technicians and doctors ready to administer life-saving pre-hospital care instantly.</p>
+        </div>
+        
+        <div class="card fade-in-up">
+          <div class="card-icon">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+          <h3>ICU-Equipped Vehicles</h3>
+          <p class="text-muted">Advanced Life Support (ALS) setups including high-end ventilators, defibrillators, and vitals monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: IMAGE + TEXT SPLIT -->
+  <section class="section" id="response-time">
+    <div class="container">
+      <div class="split-wrap">
+        <div class="split-img fade-in-up">
+          <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1200&q=80" alt="Paramedic loading a stretcher into ambulance">
+        </div>
+        <div class="split-text fade-in-up">
+          <span class="text-primary" style="font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Unmatched Response Speeds</span>
+          <h2 style="margin-top: 10px;">We Arrive in Under 8 Minutes</h2>
+          <p>When dealing with cardiac arrests, strokes, or trauma, time is your most precious asset. Our strategically distributed response base units allow us to maintain record response times across all served cities.</p>
+          
+          <div class="checklist">
+            <div class="checklist-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Instant Dispatch: Less than 30-second crew activation</span>
+            </div>
+            <div class="checklist-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Traffic Pre-emption: Smart routing navigation systems</span>
+            </div>
+            <div class="checklist-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Tele-triage: Doctors guiding the family via live link</span>
+            </div>
+          </div>
+          <a href="services.html" class="btn btn-outline">Learn About Our Services <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: TESTIMONIAL SLIDER -->
+  <section class="section section-bg-light testimonial-section" id="testimonials">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>What Our Patients Say</h2>
+        <p class="text-muted">Stories of quick recovery and trusted care from those we helped.</p>
+      </div>
+
+      <div class="testimonial-container fade-in-up">
+        <div class="testimonial-slider">
+          <div class="testimonial-slide">
+            <div class="test-avatar">RK</div>
+            <div class="test-name">Rajesh Kumar</div>
+            <div class="test-city">Chennai, India</div>
+            <div class="test-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="test-quote">"During my father's cardiac emergency, AmbulancePro arrived within 6 minutes. The paramedics on board were calm, highly professional, and started medical procedures immediately. They saved his life."</p>
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="test-avatar">AM</div>
+            <div class="test-name">Anjali Mehta</div>
+            <div class="test-city">Mumbai, India</div>
+            <div class="test-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="test-quote">"The GPS tracking was highly accurate. It helped us stay calm knowing exactly where the ambulance was. Extremely grateful to the team for their compassion and swift transport."</p>
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="test-avatar">VP</div>
+            <div class="test-name">Vikram Patel</div>
+            <div class="test-city">Delhi, India</div>
+            <div class="test-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="test-quote">"Excellent pre-hospital treatment! The ICU ambulance was fully equipped, and they did a fantastic job coordinating with the receiving hospital's emergency ward before arrival."</p>
+          </div>
+        </div>
+
+        <!-- Arrows -->
+        <button class="slider-arrow slider-prev" aria-label="Previous testimonial">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow slider-next" aria-label="Next testimonial">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
+        <!-- Dots -->
+        <div class="slider-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: EMERGENCY CTA BANNER -->
+  <section class="emergency-banner">
+    <div class="siren-glow"></div>
+    <div class="container emergency-banner-content fade-in-up">
+      <div class="siren-icon-wrap">
+        <i class="fa-solid fa-lightbulb"></i>
+      </div>
+      <h2>Every Second Counts — Call 108 Now</h2>
+      <p style="margin-bottom: 30px; font-size: 1.15rem; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+        Our central medical dispatch center is active 24/7. Direct telephone coordination links are open for instant vehicle dispatch.
+      </p>
+      <a href="tel:108" class="btn btn-white" style="font-size: 1.1rem; padding: 16px 36px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+        <i class="fa-solid fa-phone"></i> Call Emergency Line (108)
+      </a>
+    </div>
+  </section>
+
+  <!-- SHARED FOOTER -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <h3><span>🚑</span> AmbulancePro</h3>
+        <p>Your trusted emergency medical partner since 2010. Available 24/7, 365 days a year.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">BLS Ambulance</a></li>
+          <li><a href="services.html">ALS Ambulance</a></li>
+          <li><a href="services.html">ICU Transport</a></li>
+          <li><a href="services.html">Air Ambulance</a></li>
+          <li><a href="services.html">Neonatal Care</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>
+            <strong>Emergency:</strong><br>
+            <a href="tel:108" style="color: var(--primary); font-weight:700;">108</a> (Toll-Free)
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>
+            <strong>Email:</strong><br>
+            <a href="mailto:info@ambulancepro.in">info@ambulancepro.in</a>
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>
+            <strong>Address:</strong><br>
+            Chennai, India
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AmbulancePro. All rights reserved.</p>
+      <div class="emergency-footer-badge">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>🔴 EMERGENCY: CALL 108</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

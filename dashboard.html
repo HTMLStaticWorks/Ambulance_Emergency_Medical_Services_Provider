@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance & Emergency Medical Services Provider | Admin Dashboard</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Administrative control dashboard for AmbulancePro fleet dispatch, telemetry tracking, response statistics, and patient registration logs.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">
+        <span>🚑</span> AmbulancePro
+      </a>
+      
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home1.html" class="nav-link">Home1</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="signup.html" class="nav-link">Sign Up</a>
+        
+        <div class="nav-controls">
+          <button id="theme-toggle" class="control-btn" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+            <span class="btn-label">Dark</span>
+          </button>
+          <button id="rtl-toggle" class="control-btn" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-globe"></i>
+            <span class="btn-label">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: DASHBOARD HEADER BAR (inside page, below nav) -->
+  <header class="dashboard-bar">
+    <div class="container dashboard-bar-content">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <h2 style="color: var(--white); font-size: 1.4rem;">Welcome back, Admin 👋</h2>
+      </div>
+      
+      <div class="dashboard-time">
+        <span id="dashboard-date">15 June 2026</span>
+        <span class="dash-clock" id="dashboard-clock">00:00:00 AM</span>
+        
+        <div class="dashboard-actions">
+          <button class="btn btn-primary btn-small" onclick="alert('Unit dispatch initiated.')"><i class="fa-solid fa-circle-plus"></i> Dispatch Unit</button>
+          <button class="btn btn-secondary btn-small" onclick="alert('New patient record portal opened.')"><i class="fa-solid fa-user-plus"></i> Add Patient</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 2: STATS CARDS ROW -->
+  <section class="section" style="padding-top: 40px; padding-bottom: 20px;">
+    <div class="container grid-4">
+      <!-- Card 1 -->
+      <div class="card fade-in-up" style="padding: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+          <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Active Units</span>
+          <i class="fa-solid fa-truck-medical text-primary" style="font-size: 1.2rem;"></i>
+        </div>
+        <h3 style="font-size: 2rem; margin-bottom: 5px;">24</h3>
+        <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 3 from yesterday</span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card fade-in-up" style="padding: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+          <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Today's Calls</span>
+          <i class="fa-solid fa-phone text-accent" style="font-size: 1.2rem;"></i>
+        </div>
+        <h3 style="font-size: 2rem; margin-bottom: 5px;">187</h3>
+        <span class="trend-badge up"><i class="fa-solid fa-arrow-up"></i> 12% increase</span>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card fade-in-up" style="padding: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+          <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Patients Served</span>
+          <i class="fa-solid fa-users text-primary" style="font-size: 1.2rem;"></i>
+        </div>
+        <h3 style="font-size: 2rem; margin-bottom: 5px;">10,428</h3>
+        <span class="trend-badge up" style="color: var(--gray);"><i class="fa-solid fa-arrows-to-dot"></i> All time total</span>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card fade-in-up" style="padding: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+          <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Avg Response Time</span>
+          <i class="fa-solid fa-clock text-accent" style="font-size: 1.2rem;"></i>
+        </div>
+        <h3 style="font-size: 2rem; margin-bottom: 5px;">6.2 min</h3>
+        <span class="trend-badge up" style="color:#2ecc71;"><i class="fa-solid fa-arrow-down"></i> 0.8 min improved</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: LIVE DISPATCH TABLE -->
+  <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+    <div class="container">
+      <div class="card dashboard-table-card fade-in-up">
+        <div class="dashboard-table-header">
+          <h3 style="font-size: 1.25rem;">Live Fleet Dispatch Table</h3>
+          <span class="pulse-badge" style="margin-bottom:0; font-size: 0.75rem; padding: 5px 12px;">
+            <span class="pulse-dot"></span> Telemetry Active
+          </span>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="comparison-table" style="box-shadow: none; border:none; border-radius: 0;">
+            <thead>
+              <tr>
+                <th>Unit ID</th>
+                <th>Driver</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>ETA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 700;">Unit A12</td>
+                <td>R. Sharma</td>
+                <td>Adyar</td>
+                <td><span class="status-badge en-route">En Route</span></td>
+                <td style="font-weight: 600;">4 min</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Unit B07</td>
+                <td>K. Patel</td>
+                <td>T. Nagar</td>
+                <td><span class="status-badge on-scene">On Scene</span></td>
+                <td style="font-weight: 600; color: var(--primary);">Active</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Unit C03</td>
+                <td>M. Singh</td>
+                <td>Guindy</td>
+                <td><span class="status-badge available">Available</span></td>
+                <td style="color: var(--gray);">--</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Unit D15</td>
+                <td>S. Sen</td>
+                <td>Velachery</td>
+                <td><span class="status-badge returning">Returning</span></td>
+                <td style="font-weight: 600;">12 min</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Unit E02</td>
+                <td>P. Roy</td>
+                <td>Mylapore</td>
+                <td><span class="status-badge available">Available</span></td>
+                <td style="color: var(--gray);">--</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Unit F09</td>
+                <td>A. Das</td>
+                <td>Tambaram</td>
+                <td><span class="status-badge en-route">En Route</span></td>
+                <td style="font-weight: 600;">8 min</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Unit G11</td>
+                <td>J. Ali</td>
+                <td>Anna Nagar</td>
+                <td><span class="status-badge on-scene">On Scene</span></td>
+                <td style="font-weight: 600; color: var(--primary);">Active</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 700;">Unit H05</td>
+                <td>V. Rao</td>
+                <td>Nungambakkam</td>
+                <td><span class="status-badge returning">Returning</span></td>
+                <td style="font-weight: 600;">15 min</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: CHARTS SECTION -->
+  <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+    <div class="container charts-grid">
+      <!-- Bar Chart Card -->
+      <div class="card fade-in-up">
+        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Weekly Calls Volume</h3>
+        <span style="font-size: 0.85rem; color: var(--gray);">Average incoming calls per day of week</span>
+        
+        <div class="bar-chart-container">
+          <!-- Mon -->
+          <div class="bar-wrapper">
+            <span class="bar-val">140</span>
+            <div class="bar-column" style="height: 70%;"></div>
+            <span class="bar-label">Mon</span>
+          </div>
+          <!-- Tue -->
+          <div class="bar-wrapper">
+            <span class="bar-val">170</span>
+            <div class="bar-column" style="height: 85%;"></div>
+            <span class="bar-label">Tue</span>
+          </div>
+          <!-- Wed -->
+          <div class="bar-wrapper">
+            <span class="bar-val">120</span>
+            <div class="bar-column" style="height: 60%;"></div>
+            <span class="bar-label">Wed</span>
+          </div>
+          <!-- Thu -->
+          <div class="bar-wrapper">
+            <span class="bar-val">190</span>
+            <div class="bar-column" style="height: 95%;"></div>
+            <span class="bar-label">Thu</span>
+          </div>
+          <!-- Fri -->
+          <div class="bar-wrapper">
+            <span class="bar-val">160</span>
+            <div class="bar-column" style="height: 80%;"></div>
+            <span class="bar-label">Fri</span>
+          </div>
+          <!-- Sat -->
+          <div class="bar-wrapper">
+            <span class="bar-val">100</span>
+            <div class="bar-column" style="height: 50%;"></div>
+            <span class="bar-label">Sat</span>
+          </div>
+          <!-- Sun -->
+          <div class="bar-wrapper">
+            <span class="bar-val">80</span>
+            <div class="bar-column" style="height: 40%;"></div>
+            <span class="bar-label">Sun</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut Chart Card -->
+      <div class="card fade-in-up">
+        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Response Timings</h3>
+        <span style="font-size: 0.85rem; color: var(--gray);">Distribution of emergency responses</span>
+        
+        <div class="chart-donut-wrap">
+          <div class="chart-donut">
+            <div class="donut-center-text">
+              <span class="donut-center-val">Under 5m</span>
+              <p style="font-size:0.75rem; color: var(--gray); font-weight:600;">60% Cases</p>
+            </div>
+          </div>
+          
+          <div class="donut-legend">
+            <div class="legend-item">
+              <span class="legend-color color-1"></span>
+              <span>Under 5 min (60%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color color-2"></span>
+              <span>5 - 10 min (30%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color color-3"></span>
+              <span>10+ min (10%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 & 6: TWO-COLUMN ACTIVITY + QUICK ACTIONS -->
+  <section class="section" style="padding-top: 20px;">
+    <div class="container grid-2">
+      <!-- Left: Recent Activity Feed -->
+      <div class="card fade-in-up">
+        <h3 style="font-size: 1.25rem; margin-bottom: 25px;">Recent Activity Feed</h3>
+        
+        <div class="activity-feed">
+          <!-- Item 1 -->
+          <div class="activity-item">
+            <span class="activity-icon-wrap warning"></span>
+            <div class="activity-details">
+              <div class="activity-title">Ambulance Unit A12 dispatched to Adyar</div>
+              <div class="activity-time"><i class="fa-regular fa-clock"></i> 2 min ago</div>
+            </div>
+          </div>
+          
+          <!-- Item 2 -->
+          <div class="activity-item">
+            <span class="activity-icon-wrap success"></span>
+            <div class="activity-details">
+              <div class="activity-title">Critical patient delivered to Apollo Hospital</div>
+              <div class="activity-time"><i class="fa-regular fa-clock"></i> 14 min ago</div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="activity-item">
+            <span class="activity-icon-wrap info"></span>
+            <div class="activity-details">
+              <div class="activity-title">Emergency stroke call received — Dispatch Zone 4</div>
+              <div class="activity-time"><i class="fa-regular fa-clock"></i> 22 min ago</div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="activity-item">
+            <span class="activity-icon-wrap"></span>
+            <div class="activity-details">
+              <div class="activity-title">Unit B09 returned to base for regular maintenance</div>
+              <div class="activity-time"><i class="fa-regular fa-clock"></i> 45 min ago</div>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="activity-item">
+            <span class="activity-icon-wrap success"></span>
+            <div class="activity-details">
+              <div class="activity-title">New emergency contact registered - Patient portal</div>
+              <div class="activity-time"><i class="fa-regular fa-clock"></i> 1 hr ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Quick Actions Panel -->
+      <div class="card fade-in-up">
+        <h3 style="font-size: 1.25rem; margin-bottom: 25px;">Quick Actions Panel</h3>
+        
+        <div class="action-grid-buttons">
+          <div class="action-btn-card" onclick="alert('Dispatching nearest available unit...')">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <span>Dispatch Unit</span>
+          </div>
+
+          <div class="action-btn-card" onclick="alert('Opening registration ledger...')">
+            <i class="fa-solid fa-user-pen"></i>
+            <span>Add Patient Record</span>
+          </div>
+
+          <div class="action-btn-card" onclick="alert('Compiling reports data...')">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Generate Report</span>
+          </div>
+
+          <div class="action-btn-card" onclick="alert('Opening live mapping view...')">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>View Live Map</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED FOOTER -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <h3><span></span>🚑 AmbulancePro</h3>
+        <p>Your trusted emergency medical partner since 2010. Available 24/7, 365 days a year.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">BLS Ambulance</a></li>
+          <li><a href="services.html">ALS Ambulance</a></li>
+          <li><a href="services.html">ICU Transport</a></li>
+          <li><a href="services.html">Air Ambulance</a></li>
+          <li><a href="services.html">Neonatal Care</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>
+            <strong>Emergency:</strong><br>
+            <a href="tel:108" style="color: var(--primary); font-weight:700;">108</a> (Toll-Free)
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>
+            <strong>Email:</strong><br>
+            <a href="mailto:info@ambulancepro.in">info@ambulancepro.in</a>
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>
+            <strong>Address:</strong><br>
+            Chennai, India
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AmbulancePro. All rights reserved.</p>
+      <div class="emergency-footer-badge">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>🔴 EMERGENCY: CALL 108</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

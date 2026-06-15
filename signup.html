@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance & Emergency Medical Services Provider | Sign Up</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Sign up for an AmbulancePro subscription plan today. Secure online account registration, real-time validation, and member-exclusive benefits.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">
+        <span>🚑</span> AmbulancePro
+      </a>
+      
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home1.html" class="nav-link">Home1</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="signup.html" class="nav-link">Sign Up</a>
+        
+        <div class="nav-controls">
+          <button id="theme-toggle" class="control-btn" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+            <span class="btn-label">Dark</span>
+          </button>
+          <button id="rtl-toggle" class="control-btn" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-globe"></i>
+            <span class="btn-label">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: SPLIT LAYOUT -->
+  <div class="signup-wrapper">
+    <!-- Left Half: Large Paramedic Image -->
+    <div class="signup-hero-side" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1200&q=80');">
+      <div class="signup-hero-content">
+        <h2>Join the Network That Saves Lives</h2>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; max-width: 320px; margin: 0 auto;">Create an account today to safeguard your family with India's fastest emergency medical network.</p>
+      </div>
+    </div>
+
+    <!-- Right Half: Sign Up Form -->
+    <div class="signup-form-side">
+      <div class="signup-form-card fade-in-up">
+        <h2>Create Your Account</h2>
+        <p>Safeguard your family with premium pre-hospital coverage.</p>
+        
+        <!-- SECTION 2: SIGN UP FORM -->
+        <form id="signup-form" novalidate onsubmit="event.preventDefault(); alert('Account created successfully!'); this.reset();">
+          <div class="signup-grid">
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input type="text" id="fullname" class="form-control" placeholder="John Doe" required>
+            </div>
+            
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone">Phone Number (India)</label>
+              <input type="tel" id="phone" class="form-control" placeholder="9876543210" required>
+            </div>
+
+            <!-- City Dropdown -->
+            <div class="form-group">
+              <label for="city">City</label>
+              <select id="city" class="form-control" style="background-color: var(--card-bg); color: var(--text);">
+                <option value="chennai">Chennai</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="delhi">Delhi</option>
+                <option value="bangalore">Bangalore</option>
+                <option value="hyderabad">Hyderabad</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Plan Dropdown -->
+            <div class="form-group">
+              <label for="plan">Plan Selection</label>
+              <select id="plan" class="form-control" style="background-color: var(--card-bg); color: var(--text);">
+                <option value="basic">Basic Plan - ₹499/mo</option>
+                <option value="standard" selected>Standard Plan - ₹999/mo</option>
+                <option value="premium">Premium Plan - ₹1,999/mo</option>
+              </select>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="password-input-wrap">
+                <input type="password" id="password" class="form-control" placeholder="Min. 8 characters" required>
+              </div>
+              <!-- Password Strength Meter -->
+              <div class="password-strength-wrap">
+                <div class="strength-bar-container">
+                  <div class="strength-bar" id="strength-bar"></div>
+                </div>
+                <span class="strength-label" id="strength-label"></span>
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" class="form-control" placeholder="Re-enter password" required>
+            </div>
+
+            <!-- Agree Checkbox -->
+            <div class="form-group form-group-full">
+              <label class="checkbox-label">
+                <input type="checkbox" id="terms-checkbox" required>
+                <span>I agree to the <a href="#" style="color:var(--primary); font-weight:600;">Terms & Conditions</a> and privacy policies.</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; padding: 15px 0;">Create My Account</button>
+        </form>
+
+        <!-- SECTION 3: SOCIAL SIGN UP -->
+        <div class="social-signup-wrap">
+          <div class="divider-text">or sign up with</div>
+          <div class="social-btns">
+            <button class="btn btn-social" onclick="alert('Continuing with Google...')">
+              <i class="fa-brands fa-google" style="color: #ea4335; margin-right: 8px;"></i> Google
+            </button>
+            <button class="btn btn-social" onclick="alert('Continuing with Facebook...')">
+              <i class="fa-brands fa-facebook-f" style="color: #1877f2; margin-right: 8px;"></i> Facebook
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: BENEFITS CHECKLIST -->
+  <section class="section section-bg-light signup-benefits">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up" style="margin-bottom: 40px;">
+        <h2>What You Get After Signing Up</h2>
+        <p class="text-muted">Enjoy members-only medical tracking privileges and support.</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card fade-in-up" style="padding: 24px; text-align: center; align-items: center;">
+          <div class="card-icon" style="margin-bottom: 15px;"><i class="fa-solid fa-right-to-bracket"></i></div>
+          <h4 style="margin-bottom: 8px;">Instant Access</h4>
+          <p class="text-muted" style="font-size: 0.85rem;">Instant access to ambulance booking portal and status indicators.</p>
+        </div>
+
+        <div class="card fade-in-up" style="padding: 24px; text-align: center; align-items: center;">
+          <div class="card-icon" style="margin-bottom: 15px;"><i class="fa-solid fa-truck-fast"></i></div>
+          <h4 style="margin-bottom: 8px;">Priority Dispatch</h4>
+          <p class="text-muted" style="font-size: 0.85rem;">Priority dispatch for registered members with zero transit delays.</p>
+        </div>
+
+        <div class="card fade-in-up" style="padding: 24px; text-align: center; align-items: center;">
+          <div class="card-icon" style="margin-bottom: 15px;"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <h4 style="margin-bottom: 8px;">Safety Newsletter</h4>
+          <p class="text-muted" style="font-size: 0.85rem;">Monthly health & safety newsletters and emergency guides direct to inbox.</p>
+        </div>
+
+        <div class="card fade-in-up" style="padding: 24px; text-align: center; align-items: center;">
+          <div class="card-icon" style="margin-bottom: 15px;"><i class="fa-solid fa-percent"></i></div>
+          <h4 style="margin-bottom: 8px;">10% Member Discount</h4>
+          <p class="text-muted" style="font-size: 0.85rem;">10% discount on your first booking fee and outpatient transfers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: TRUST STRIP -->
+  <section class="section" style="padding: 30px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container" style="display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; text-align:center;">
+      <div style="font-weight: 700; color: var(--text);"><i class="fa-solid fa-lock text-primary"></i> 256-bit Secure</div>
+      <div style="font-weight: 700; color: var(--text);"><i class="fa-solid fa-circle-check text-primary"></i> Verified Provider</div>
+      <div style="font-weight: 700; color: var(--text);"><i class="fa-solid fa-hospital text-primary"></i> NABH Certified</div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: ALREADY HAVE AN ACCOUNT? -->
+  <section class="section" style="padding: 50px 0; text-align: center;">
+    <div class="container fade-in-up">
+      <p style="margin-bottom: 15px; font-weight: 500;">Already a member?</p>
+      <a href="dashboard.html" class="btn btn-outline" style="padding: 10px 30px; font-size: 0.9rem;">
+        Log In to Your Account <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- SHARED FOOTER -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <h3><span></span>🚑 AmbulancePro</h3>
+        <p>Your trusted emergency medical partner since 2010. Available 24/7, 365 days a year.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">BLS Ambulance</a></li>
+          <li><a href="services.html">ALS Ambulance</a></li>
+          <li><a href="services.html">ICU Transport</a></li>
+          <li><a href="services.html">Air Ambulance</a></li>
+          <li><a href="services.html">Neonatal Care</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>
+            <strong>Emergency:</strong><br>
+            <a href="tel:108" style="color: var(--primary); font-weight:700;">108</a> (Toll-Free)
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>
+            <strong>Email:</strong><br>
+            <a href="mailto:info@ambulancepro.in">info@ambulancepro.in</a>
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>
+            <strong>Address:</strong><br>
+            Chennai, India
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AmbulancePro. All rights reserved.</p>
+      <div class="emergency-footer-badge">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>🔴 EMERGENCY: CALL 108</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+  <script>
+    // Automatically pre-select plan from query string if present
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const plan = params.get('plan');
+      const planSelect = document.getElementById('plan');
+      if (plan && planSelect) {
+        // Find matching option and select it
+        const options = Array.from(planSelect.options);
+        const match = options.find(opt => opt.value === plan);
+        if (match) {
+          planSelect.value = plan;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

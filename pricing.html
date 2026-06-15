@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance & Emergency Medical Services Provider | Pricing</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Affordable subscription plans for ambulance priority dispatches, ALS ICU coverage, and family medical care. Compare features and choose.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">
+        <span>🚑</span> AmbulancePro
+      </a>
+      
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home1.html" class="nav-link">Home1</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="signup.html" class="nav-link">Sign Up</a>
+        
+        <div class="nav-controls">
+          <button id="theme-toggle" class="control-btn" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+            <span class="btn-label">Dark</span>
+          </button>
+          <button id="rtl-toggle" class="control-btn" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-globe"></i>
+            <span class="btn-label">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: PRICING HERO -->
+  <section class="section section-bg-light" style="padding-top: 140px; padding-bottom: 50px; text-align: center;">
+    <div class="container fade-in-up">
+      <h1 style="font-size: 2.75rem; margin-bottom: 15px;">Transparent. Affordable. Life-Saving.</h1>
+      <p class="text-muted" style="max-width: 650px; margin: 0 auto 30px auto; font-size: 1.1rem;">
+        No hidden fees. Cancel anytime. Subscription plans built to safeguard your family and hospital operations.
+      </p>
+
+      <!-- SECTION 2: MONTHLY/YEARLY TOGGLE -->
+      <div class="toggle-pricing-wrap">
+        <span class="toggle-label">Monthly</span>
+        <label class="switch" aria-label="Toggle annual pricing">
+          <input type="checkbox" id="billing-toggle">
+          <span class="slider-switch"></span>
+        </label>
+        <span class="toggle-label">Yearly</span>
+        <span class="billing-badge">2 Months Free</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PRICING CARDS -->
+  <section class="section" style="padding-top: 20px;">
+    <div class="container">
+      <div class="pricing-grid">
+        <!-- Plan 1: Basic -->
+        <div class="card pricing-card fade-in-up">
+          <div class="pricing-header">
+            <div class="pricing-title">Basic</div>
+            <div class="pricing-amount" data-monthly="499">₹499<span>/mo</span></div>
+          </div>
+          <ul class="service-features" style="margin-bottom: 30px;">
+            <li><i class="fa-solid fa-check"></i> BLS Ambulance support</li>
+            <li><i class="fa-solid fa-check"></i> GPS Live tracking</li>
+            <li><i class="fa-solid fa-check"></i> 2 Paramedics crew</li>
+            <li class="text-muted"><i class="fa-solid fa-xmark"></i> No Air Transport</li>
+            <li class="text-muted"><i class="fa-solid fa-xmark"></i> No Family Coverage</li>
+          </ul>
+          <a href="signup.html?plan=basic" class="btn btn-outline" style="width: 100%;">Choose Basic</a>
+        </div>
+
+        <!-- Plan 2: Standard (⭐ Most Popular) -->
+        <div class="card pricing-card popular fade-in-up">
+          <span class="popular-badge">⭐ Most Popular</span>
+          <div class="pricing-header">
+            <div class="pricing-title" style="color: var(--primary);">Standard</div>
+            <div class="pricing-amount" data-monthly="999">₹999<span>/mo</span></div>
+          </div>
+          <ul class="service-features" style="margin-bottom: 30px;">
+            <li><i class="fa-solid fa-check"></i> ALS + ICU Ambulance support</li>
+            <li><i class="fa-solid fa-check"></i> Priority dispatch activation</li>
+            <li><i class="fa-solid fa-check"></i> 3 Paramedics crew</li>
+            <li class="text-muted"><i class="fa-solid fa-xmark"></i> No Air Transport</li>
+            <li class="text-muted"><i class="fa-solid fa-xmark"></i> No Family Coverage</li>
+          </ul>
+          <a href="signup.html?plan=standard" class="btn btn-primary" style="width: 100%;">Choose Standard</a>
+        </div>
+
+        <!-- Plan 3: Premium -->
+        <div class="card pricing-card fade-in-up">
+          <div class="pricing-header">
+            <div class="pricing-title">Premium</div>
+            <div class="pricing-amount" data-monthly="1999">₹1,999<span>/mo</span></div>
+          </div>
+          <ul class="service-features" style="margin-bottom: 30px;">
+            <li><i class="fa-solid fa-check"></i> Air + Ground ICU Transport</li>
+            <li><i class="fa-solid fa-check"></i> 24/7 Dedicated Emergency Hotline</li>
+            <li><i class="fa-solid fa-check"></i> Full on-board Medical Team</li>
+            <li><i class="fa-solid fa-check"></i> Air evac inclusion</li>
+            <li><i class="fa-solid fa-check"></i> Full Family Coverage</li>
+          </ul>
+          <a href="signup.html?plan=premium" class="btn btn-outline" style="width: 100%;">Choose Premium</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: COMPARISON TABLE -->
+  <section class="section section-bg-light" id="comparison">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>Compare Plans</h2>
+        <p class="text-muted">Explore details side-by-side to choose the right coverage plan.</p>
+      </div>
+
+      <div class="table-responsive fade-in-up">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Features</th>
+              <th>Basic</th>
+              <th>Standard</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Response Time Guarantee</td>
+              <td>Standard Response</td>
+              <td>Priority Dispatch</td>
+              <td>Ultra Priority</td>
+            </tr>
+            <tr>
+              <td>Paramedics Crew</td>
+              <td>2 EMT specialists</td>
+              <td>3 Specialists</td>
+              <td>Critical Doctor Team</td>
+            </tr>
+            <tr>
+              <td>On-board ICU Setup</td>
+              <td><i class="fa-solid fa-xmark"></i></td>
+              <td><i class="fa-solid fa-check"></i> (Ventilator)</td>
+              <td><i class="fa-solid fa-check"></i> (Full ICU Suite)</td>
+            </tr>
+            <tr>
+              <td>Air Evacuation Transport</td>
+              <td><i class="fa-solid fa-xmark"></i></td>
+              <td><i class="fa-solid fa-xmark"></i></td>
+              <td><i class="fa-solid fa-check"></i> Unlimited Coverage</td>
+            </tr>
+            <tr>
+              <td>GPS Real-Time Tracking</td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr class="popular-row">
+              <td>Priority Dispatch Base</td>
+              <td><i class="fa-solid fa-xmark"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Family Member Addon</td>
+              <td><i class="fa-solid fa-xmark"></i></td>
+              <td><i class="fa-solid fa-xmark"></i></td>
+              <td><i class="fa-solid fa-check"></i> (Up to 5 members)</td>
+            </tr>
+            <tr>
+              <td>24/7 Clinical Support Hotline</td>
+              <td>Standard Helpline</td>
+              <td>Helpline Priority</td>
+              <td>Dedicated Doctor hotline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: TRUST BADGES -->
+  <section class="section" style="padding: 40px 0;">
+    <div class="container">
+      <div class="card fade-in-up" style="flex-direction: row; flex-wrap: wrap; justify-content: space-around; gap: 30px; padding: 30px; text-align: center;">
+        <div style="font-weight: 700; display: inline-flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-lock text-primary" style="font-size: 1.25rem;"></i> No Hidden Fees
+        </div>
+        <div style="font-weight: 700; display: inline-flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-circle-check text-primary" style="font-size: 1.25rem;"></i> Cancel Anytime
+        </div>
+        <div style="font-weight: 700; display: inline-flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-hospital text-primary" style="font-size: 1.25rem;"></i> Insured & Certified
+        </div>
+        <div style="font-weight: 700; display: inline-flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-phone text-primary" style="font-size: 1.25rem;"></i> 24/7 Dedicated Support
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: PRICING FAQ ACCORDION -->
+  <section class="section section-bg-light" id="pricing-faq">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>Pricing FAQs</h2>
+        <p class="text-muted">Frequently asked questions about subscription details.</p>
+      </div>
+
+      <div class="faq-accordion fade-in-up">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            Can I switch plans later?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>Yes, you can upgrade or downgrade your plan at any time through your dashboard portal. Upgrades apply instantly and are prorated, while downgrades take effect at the start of the next billing cycle.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            Is there a free trial?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>We do not offer a free trial period since emergency medical services involve immediate crew and telemetry deployments. However, our monthly memberships have no minimum commitment and can be cancelled at any time.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            Do you offer hospital/bulk pricing?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>Yes, we provide bulk pricing packages for partner clinics, corporate tech parks, and hospital setups. Please contact our corporate sales division at bulk@ambulancepro.in for customized quote inquiries.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            What happens if I miss a payment?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-content">
+            <p>If a recurring payment fails, we provide a 7-day grace period during which your emergency coverage benefits remain fully active. We will send notification alerts to update billing information before pausing services.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED FOOTER -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <h3><span>🚑</span> AmbulancePro</h3>
+        <p>Your trusted emergency medical partner since 2010. Available 24/7, 365 days a year.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">BLS Ambulance</a></li>
+          <li><a href="services.html">ALS Ambulance</a></li>
+          <li><a href="services.html">ICU Transport</a></li>
+          <li><a href="services.html">Air Ambulance</a></li>
+          <li><a href="services.html">Neonatal Care</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>
+            <strong>Emergency:</strong><br>
+            <a href="tel:108" style="color: var(--primary); font-weight:700;">108</a> (Toll-Free)
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>
+            <strong>Email:</strong><br>
+            <a href="mailto:info@ambulancepro.in">info@ambulancepro.in</a>
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>
+            <strong>Address:</strong><br>
+            Chennai, India
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AmbulancePro. All rights reserved.</p>
+      <div class="emergency-footer-badge">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>🔴 EMERGENCY: CALL 108</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

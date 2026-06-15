@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance & Emergency Medical Services Provider | Home Alternate</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="AmbulancePro alternate portal. Providing live dispatch feed trackers, ISO certified ambulance operations, and immediate medical help.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Alternate Hero Layout */
+    .home1-hero {
+      height: 90vh;
+      background-image: url('https://images.unsplash.com/photo-1587745416684-47953f16f02f?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .home1-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(13, 27, 42, 0.9); /* Darker overlay as requested */
+    }
+    .home1-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 24px;
+      color: var(--white);
+    }
+    .home1-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 25px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--white);
+      height: 90px; /* Reserve space to prevent layout shift */
+    }
+    @media (max-width: 768px) {
+      .home1-hero {
+        height: 70vh;
+      }
+      .home1-hero h1 {
+        font-size: 2rem;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar" id="main-navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">
+        <span>🚑</span> AmbulancePro
+      </a>
+      
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home1.html" class="nav-link">Home1</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <a href="signup.html" class="nav-link">Sign Up</a>
+        
+        <div class="nav-controls">
+          <button id="theme-toggle" class="control-btn" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+            <span class="btn-label">Dark</span>
+          </button>
+          <button id="rtl-toggle" class="control-btn" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-globe"></i>
+            <span class="btn-label">RTL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: DARK HERO WITH TYPEWRITER -->
+  <header class="home1-hero">
+    <div class="home1-hero-content">
+      <div class="pulse-badge" style="background-color: rgba(230, 57, 70, 0.2);">
+        <span class="pulse-dot"></span>
+        EMERGENCY COORDINATION HUB
+      </div>
+      <!-- Typewriter values loaded as data attribute -->
+      <h1>
+        <span class="typewriter-text" data-words='["We Reach You Before It Is Too Late.", "Trusted by 500+ Hospitals.", "24/7 Emergency Dispatch."]'></span>
+      </h1>
+      <p style="margin-bottom: 30px; font-size: 1.15rem; color: var(--gray); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Advanced pre-hospital treatments and swift transport. Connect instantly with our dedicated clinical staff.
+      </p>
+      <div class="hero-btns">
+        <a href="signup.html" class="btn btn-primary" style="padding: 16px 36px;"><i class="fa-solid fa-bell"></i> Get Emergency Help Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 2: SCROLLING TICKER STRIP -->
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <div class="ticker-item"><span>✦</span> Trusted by 500+ Hospitals</div>
+      <div class="ticker-item"><span>✦</span> 24/7 Dispatch</div>
+      <div class="ticker-item"><span>✦</span> ISO 9001 Certified</div>
+      <div class="ticker-item"><span>✦</span> Award-Winning Care</div>
+      <div class="ticker-item"><span>✦</span> Air & Ground Transport</div>
+      
+      <!-- Duplicate items for smooth looping -->
+      <div class="ticker-item"><span>✦</span> Trusted by 500+ Hospitals</div>
+      <div class="ticker-item"><span>✦</span> 24/7 Dispatch</div>
+      <div class="ticker-item"><span>✦</span> ISO 9001 Certified</div>
+      <div class="ticker-item"><span>✦</span> Award-Winning Care</div>
+      <div class="ticker-item"><span>✦</span> Air & Ground Transport</div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: WHY CHOOSE US -->
+  <section class="section" id="why-choose-us">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up">
+        <h2>Why Choose Us</h2>
+        <p class="text-muted">High standards of medical transport combined with transparency.</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card stat-card fade-in-up">
+          <div class="card-icon" style="margin: 0 auto 20px auto;"><i class="fa-solid fa-gauge-high"></i></div>
+          <div class="stat-card-number">8 Min</div>
+          <h3>Fastest Response</h3>
+          <p class="text-muted" style="font-size: 0.9rem;">State-of-the-art dispatch and distributed ambulances ensure rapid arrival.</p>
+        </div>
+
+        <div class="card stat-card fade-in-up">
+          <div class="card-icon" style="margin: 0 auto 20px auto;"><i class="fa-solid fa-users-medical"></i></div>
+          <div class="stat-card-number">300+</div>
+          <h3>Certified Team</h3>
+          <p class="text-muted" style="font-size: 0.9rem;">Qualified trauma care experts, paramedics, and doctors ready to assist.</p>
+        </div>
+
+        <div class="card stat-card fade-in-up">
+          <div class="card-icon" style="margin: 0 auto 20px auto;"><i class="fa-solid fa-truck-medical"></i></div>
+          <div class="stat-card-number">150+</div>
+          <h3>Modern Fleet</h3>
+          <p class="text-muted" style="font-size: 0.9rem;">Fully responsive ICU, ALS, and basic life support vehicles on standby.</p>
+        </div>
+
+        <div class="card stat-card fade-in-up">
+          <div class="card-icon" style="margin: 0 auto 20px auto;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <div class="stat-card-number">100%</div>
+          <h3>Transparent Pricing</h3>
+          <p class="text-muted" style="font-size: 0.9rem;">No hidden fees. Affordable plans built for individuals and hospitals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: IMAGE GALLERY ROW -->
+  <section class="section section-bg-light" style="padding: 60px 0;">
+    <div class="container">
+      <div class="section-title-wrap fade-in-up" style="margin-bottom: 40px;">
+        <h2>Operational Gallery</h2>
+        <p class="text-muted">A look inside our state-of-the-art vehicles and dispatch team.</p>
+      </div>
+
+      <div class="gallery-row">
+        <div class="gallery-item fade-in-up">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1200&q=80" alt="Ambulance exterior parked">
+          <div class="gallery-overlay">
+            <h3>Ambulance Fleet</h3>
+            <p>Our response units parked on standby</p>
+          </div>
+        </div>
+
+        <div class="gallery-item fade-in-up">
+          <img src="https://images.unsplash.com/photo-1631815588090-d1bcbe9e0f56?auto=format&fit=crop&w=1200&q=80" alt="ICU Ambulance interior equipment">
+          <div class="gallery-overlay">
+            <h3>ICU Interior</h3>
+            <p>Fully equipped cardiac and life-support units</p>
+          </div>
+        </div>
+
+        <div class="gallery-item fade-in-up">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1200&q=80" alt="Paramedic team looking professional">
+          <div class="gallery-overlay">
+            <h3>Paramedic Team</h3>
+            <p>Qualified pre-hospital specialists</p>
+          </div>
+        </div>
+
+        <div class="gallery-item fade-in-up">
+          <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1200&q=80" alt="Dispatch control center screens">
+          <div class="gallery-overlay">
+            <h3>Dispatch Control</h3>
+            <p>24/7 routing and medical navigation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: LIVE DISPATCH WIDGET (SIMULATED) -->
+  <section class="section" id="live-dispatch">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-title-wrap fade-in-up" style="margin-bottom: 40px;">
+        <h2>Live Fleet Status</h2>
+        <p class="text-muted">Real-time status updates of active ambulance dispatches.</p>
+      </div>
+
+      <div class="dispatch-widget fade-in-up">
+        <div class="dispatch-header">
+          <div class="dispatch-title-status">
+            <span class="dispatch-dot-blink"></span>
+            <h3>Active Dispatch Feed</h3>
+          </div>
+          <span style="font-size: 0.85rem; color: var(--gray); font-weight:600;">Refreshes live</span>
+        </div>
+
+        <div class="dispatch-list">
+          <!-- Item 1: En Route -->
+          <div class="dispatch-item status-en-route">
+            <div class="dispatch-unit-info">
+              <span class="dispatch-unit-id">Unit A12 (Advanced ICU)</span>
+              <span class="dispatch-unit-loc">En Route to Adyar</span>
+            </div>
+            <div class="dispatch-status-eta">
+              <span class="status-badge en-route">En Route</span>
+              <span class="dispatch-eta">ETA 4 min</span>
+            </div>
+          </div>
+
+          <!-- Item 2: On Scene -->
+          <div class="dispatch-item status-on-scene">
+            <div class="dispatch-unit-info">
+              <span class="dispatch-unit-id">Unit B07 (Basic Support)</span>
+              <span class="dispatch-unit-loc">Responding in T. Nagar</span>
+            </div>
+            <div class="dispatch-status-eta">
+              <span class="status-badge on-scene">On Scene</span>
+              <span class="dispatch-eta">Active Scene</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Available -->
+          <div class="dispatch-item status-available">
+            <div class="dispatch-unit-info">
+              <span class="dispatch-unit-id">Unit C03 (Neonatal ICU)</span>
+              <span class="dispatch-unit-loc">Stationed Base</span>
+            </div>
+            <div class="dispatch-status-eta">
+              <span class="status-badge available">Available</span>
+              <span class="dispatch-eta">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: NEWSLETTER SIGNUP -->
+  <section class="section section-bg-light" id="newsletter">
+    <div class="container">
+      <div class="card newsletter-card fade-in-up" style="border-top: 4px solid var(--primary); padding: 50px 40px;">
+        <h2>Stay Informed. Save Lives.</h2>
+        <p class="text-muted" style="max-width: 500px; margin: 0 auto;">Subscribe to receive local health updates, emergency guides, and updates from the AmbulancePro network.</p>
+        
+        <form id="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+          <div class="form-group-inline">
+            <input type="email" class="form-control" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+        <small>No spam. Emergency alerts and safety tips only.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED FOOTER -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <h3><span></span>🚑 AmbulancePro</h3>
+        <p>Your trusted emergency medical partner since 2010. Available 24/7, 365 days a year.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">BLS Ambulance</a></li>
+          <li><a href="services.html">ALS Ambulance</a></li>
+          <li><a href="services.html">ICU Transport</a></li>
+          <li><a href="services.html">Air Ambulance</a></li>
+          <li><a href="services.html">Neonatal Care</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>
+            <strong>Emergency:</strong><br>
+            <a href="tel:108" style="color: var(--primary); font-weight:700;">108</a> (Toll-Free)
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>
+            <strong>Email:</strong><br>
+            <a href="mailto:info@ambulancepro.in">info@ambulancepro.in</a>
+          </span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>
+            <strong>Address:</strong><br>
+            Chennai, India
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 AmbulancePro. All rights reserved.</p>
+      <div class="emergency-footer-badge">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span>🔴 EMERGENCY: CALL 108</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
