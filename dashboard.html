@@ -9,51 +9,19 @@
   <!-- SEO Meta Tags -->
   <meta name="description" content="Administrative control dashboard for AmbulancePro fleet dispatch, telemetry tracking, response statistics, and patient registration logs.">
   <!-- Fonts & Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <!-- Shared Style -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar" id="main-navbar">
-    <div class="nav-container container">
-      <a href="index.html" class="logo">
-        <span>🚑</span> AmbulancePro
-      </a>
-      
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      
-      <div class="nav-menu" id="nav-menu">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="home1.html" class="nav-link">Home1</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="dashboard.html" class="nav-link">Dashboard</a>
-        <a href="signup.html" class="nav-link">Sign Up</a>
-        
-        <div class="nav-controls">
-          <button id="theme-toggle" class="control-btn" aria-label="Toggle dark mode">
-            <i class="fa-solid fa-moon"></i>
-            <span class="btn-label">Dark</span>
-          </button>
-          <button id="rtl-toggle" class="control-btn" aria-label="Toggle RTL layout">
-            <i class="fa-solid fa-globe"></i>
-            <span class="btn-label">RTL</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
-
   <!-- SECTION 1: DASHBOARD HEADER BAR (inside page, below nav) -->
-  <header class="dashboard-bar">
+  <header class="dashboard-bar" style="margin-top: 0;">
     <div class="container dashboard-bar-content">
       <div style="display: flex; align-items: center; gap: 15px;">
-        <h2 style="color: var(--white); font-size: 1.4rem;">Welcome back, Admin 👋</h2>
+        <a href="index.html" class="logo" style="color: var(--white); font-weight: 700; margin-right: 15px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+          <span>🚑</span> AmbulancePro
+        </a>
+        <h2 style="color: var(--white); font-size: 1.4rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">Welcome back, Admin 👋</h2>
       </div>
       
       <div class="dashboard-time">
@@ -61,6 +29,14 @@
         <span class="dash-clock" id="dashboard-clock">00:00:00 AM</span>
         
         <div class="dashboard-actions">
+          <button id="theme-toggle" class="btn btn-secondary btn-small" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+            <span class="btn-label">Dark</span>
+          </button>
+          <button id="rtl-toggle" class="btn btn-secondary btn-small" aria-label="Toggle RTL layout">
+            <i class="fa-solid fa-globe"></i>
+            <span class="btn-label">RTL</span>
+          </button>
           <button class="btn btn-primary btn-small" onclick="alert('Unit dispatch initiated.')"><i class="fa-solid fa-circle-plus"></i> Dispatch Unit</button>
           <button class="btn btn-secondary btn-small" onclick="alert('New patient record portal opened.')"><i class="fa-solid fa-user-plus"></i> Add Patient</button>
         </div>
@@ -369,76 +345,7 @@
     </div>
   </section>
 
-  <!-- SHARED FOOTER -->
-  <footer class="footer">
-    <div class="container footer-top">
-      <div class="footer-brand">
-        <h3><span></span>🚑 AmbulancePro</h3>
-        <p>Your trusted emergency medical partner since 2010. Available 24/7, 365 days a year.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html">BLS Ambulance</a></li>
-          <li><a href="services.html">ALS Ambulance</a></li>
-          <li><a href="services.html">ICU Transport</a></li>
-          <li><a href="services.html">Air Ambulance</a></li>
-          <li><a href="services.html">Neonatal Care</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <div class="footer-contact-item">
-          <i class="fa-solid fa-phone"></i>
-          <span>
-            <strong>Emergency:</strong><br>
-            <a href="tel:108" style="color: var(--primary); font-weight:700;">108</a> (Toll-Free)
-          </span>
-        </div>
-        <div class="footer-contact-item">
-          <i class="fa-solid fa-envelope"></i>
-          <span>
-            <strong>Email:</strong><br>
-            <a href="mailto:info@ambulancepro.in">info@ambulancepro.in</a>
-          </span>
-        </div>
-        <div class="footer-contact-item">
-          <i class="fa-solid fa-location-dot"></i>
-          <span>
-            <strong>Address:</strong><br>
-            Chennai, India
-          </span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="container footer-bottom">
-      <p>&copy; 2026 AmbulancePro. All rights reserved.</p>
-      <div class="emergency-footer-badge">
-        <i class="fa-solid fa-circle-exclamation"></i>
-        <span>🔴 EMERGENCY: CALL 108</span>
-      </div>
-    </div>
-  </footer>
+  <!-- FOOTER REMOVED -->
 
   <!-- Unified JS -->
   <script src="js/main.js"></script>
