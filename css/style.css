@@ -2566,3 +2566,243 @@ html[dir="rtl"] .checkbox-label {
 html[dir="rtl"] .form-group-inline {
   flex-direction: row-reverse;
 }
+
+/* ==========================================================================
+   10. Responsive Centering Overrides for Mobile & Tablet (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Center Headings and Text in Sections & Cards */
+  .section h1, 
+  .section h2, 
+  .section h3, 
+  .section h4, 
+  .section h5, 
+  .section h6,
+  .section p,
+  .split-text h2,
+  .split-text p,
+  .split-text span.text-primary,
+  .card h3,
+  .card p,
+  .value-card h3,
+  .value-card p,
+  .pricing-card h3,
+  .pricing-card p,
+  .header-hero h1,
+  .breadcrumbs {
+    text-align: center !important;
+  }
+
+  /* Center Breadcrumbs */
+  .breadcrumbs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Center Card content and flex children (including buttons) */
+  .card,
+  .value-card,
+  .pricing-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Center Icons in Cards and Boxes */
+  .card-icon,
+  .cert-icon,
+  .process-icon-wrap {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Center Lists and Feature Items */
+  .service-features,
+  .pricing-features {
+    align-items: center !important;
+    padding-left: 0 !important;
+    width: 100%;
+  }
+
+  .service-features li,
+  .pricing-features li {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .checklist {
+    align-items: center !important;
+    padding-left: 0 !important;
+  }
+
+  .checklist-item {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Center Split Layouts (Image + Text) */
+  .split-wrap {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .split-img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .split-img img {
+    margin: 0 auto !important;
+  }
+
+  /* Center Founder portrait and story in about page */
+  .grid-2 > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Keep timeline structural alignment (left aligned in LTR, right aligned in RTL) */
+  .timeline {
+    align-self: stretch;
+    text-align: left !important;
+  }
+
+  .timeline-item {
+    text-align: left !important;
+  }
+
+  /* Center Process Steps on Mobile/Tablet */
+  .process-steps {
+    align-items: center !important;
+  }
+
+  .process-step {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .process-icon-wrap {
+    margin: 0 auto 15px auto !important;
+  }
+
+  /* Grid layouts stack behavior and spacing */
+  .values-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .equipment-list-grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    width: 100%;
+  }
+
+  .equipment-item {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Stack Live Dispatch Widget items on small screens */
+  .dispatch-item {
+    flex-direction: column !important;
+    gap: 10px;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .dispatch-status-eta {
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  /* Dashboard Header Flex and Layout adaptations */
+  .dashboard-bar-content {
+    flex-direction: column !important;
+    gap: 15px !important;
+    text-align: center !important;
+  }
+
+  .dashboard-bar-content > div:first-child {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .dashboard-bar-content > div:first-child h2 {
+    border-left: none !important;
+    border-right: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    padding-top: 10px !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .dashboard-time {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .dashboard-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .dashboard-actions .btn {
+    flex: 1 1 auto !important;
+    font-size: 0.75rem !important;
+    padding: 8px 12px !important;
+    min-width: 120px !important;
+  }
+
+  /* Donut chart wrap stacking to prevent overflow */
+  .chart-donut-wrap {
+    flex-direction: column !important;
+    gap: 20px !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Bar chart scaling for small screens */
+  .bar-column {
+    width: 15px !important;
+  }
+  .bar-val {
+    font-size: 0.7rem !important;
+  }
+  .bar-label {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* Extra small mobile screens (like 360px) */
+@media (max-width: 480px) {
+  .action-grid-buttons {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Signup form card top-bar stacking */
+  .signup-form-card > div:first-child {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  
+  .signup-form-card > div:first-child > div {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
