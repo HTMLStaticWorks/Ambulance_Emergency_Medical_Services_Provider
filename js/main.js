@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQAccordion();
   initFormValidation();
   initDashboardClock();
+  initBackToTop();
+  initDashboardSidebar();
 });
 
 /* ==========================================================================
@@ -603,3 +605,102 @@ function initScrollAnimations() {
 
   elements.forEach(el => observer.observe(el));
 }
+
+/* ==========================================================================
+   15. BACK TO TOP BUTTON — dynamically inject, show on scroll, smooth scroll
+   ========================================================================== */
+function initBackToTop() {
+  // 1. Create the button element
+  const backToTopBtn = document.createElement('button');
+  backToTopBtn.id = 'back-to-top';
+  backToTopBtn.className = 'back-to-top';
+  backToTopBtn.setAttribute('aria-label', 'Back to top');
+  
+  // 2. Set the inner SVG progress circle and chevron icon
+  backToTopBtn.innerHTML = `
+    <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
+      <circle class="progress-bg" cx="50" cy="50" r="45" fill="none" stroke-width="6"></circle>
+      <circle class="progress-bar" cx="50" cy="50" r="45" fill="none" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="283"></circle>
+    </svg>
+    <i class="fa-solid fa-chevron-up"></i>
+  `;
+  
+  // 3. Append to body
+  document.body.appendChild(backToTopBtn);
+
+  const progressBar = backToTopBtn.querySelector('.progress-bar');
+  const pathLength = 283;
+  
+  // 4. Update the scroll progress circle stroke-dashoffset
+  const updateProgress = () => {
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    
+    if (docHeight > 0) {
+      const progress = scrollTop / docHeight;
+      const offset = pathLength - (progress * pathLength);
+      progressBar.style.strokeDashoffset = offset;
+    }
+  };
+
+  // 5. Toggle visibility based on scroll position (show after 300px)
+  const toggleVisibility = () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  };
+
+  // 6. Event listener for scroll
+  window.addEventListener('scroll', () => {
+    toggleVisibility();
+    updateProgress();
+  });
+
+  // 7. Initial check in case page starts scrolled down
+  toggleVisibility();
+  updateProgress();
+
+  // 8. Click event - smooth scroll to top
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+/* ==========================================================================
+   16. DASHBOARD SIDEBAR DRAWER — slide-out sidebar toggle on mobile/tablet
+   ========================================================================== */
+function initDashboardSidebar() {
+  const hamburger = document.getElementById('dashboard-hamburger-btn');
+  const sidebar = document.getElementById('dashboard-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const closeBtn = document.getElementById('sidebar-close-btn');
+
+  if (!sidebar) return;
+
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.add('open');
+      if (overlay) overlay.classList.add('active');
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('active');
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+  }
+}
+
