@@ -77,6 +77,33 @@
         max-width: 280px;
       }
     }
+    /* Advanced Emergency Care Section - Card Images */
+    .features-card-img-wrap {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      border-radius: var(--radius-card) var(--radius-card) 0 0;
+      margin-top: -30px;
+      margin-left: -30px;
+      margin-right: -30px;
+      width: calc(100% + 60px);
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--border);
+    }
+    .features-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card:hover .features-card-img-wrap img {
+      transform: scale(1.06);
+    }
+    #features .card {
+      align-items: flex-start;
+      text-align: left;
+      overflow: hidden; /* Prevent image from overflowing card rounded corners on zoom */
+    }
   </style>
 </head>
 <body>
@@ -167,24 +194,24 @@
       
       <div class="grid-3">
         <div class="card fade-in-up">
-          <div class="card-icon">
-            <i class="fa-solid fa-location-crosshairs"></i>
+          <div class="features-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=600&q=80" alt="GPS Real-Time Tracking Screen">
           </div>
           <h3>GPS Real-Time Tracking</h3>
           <p class="text-muted">Track your ambulance in real-time from booking to arrival. Complete route transparency for peace of mind.</p>
         </div>
         
         <div class="card fade-in-up">
-          <div class="card-icon">
-            <i class="fa-solid fa-user-doctor"></i>
+          <div class="features-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80" alt="Certified Paramedics Team">
           </div>
           <h3>Certified Paramedics</h3>
           <p class="text-muted">Highly trained trauma technicians and doctors ready to administer life-saving pre-hospital care instantly.</p>
         </div>
         
         <div class="card fade-in-up">
-          <div class="card-icon">
-            <i class="fa-solid fa-heart-pulse"></i>
+          <div class="features-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?auto=format&fit=crop&w=600&q=80" alt="ICU-Equipped Vehicle Interior">
           </div>
           <h3>ICU-Equipped Vehicles</h3>
           <p class="text-muted">Advanced Life Support (ALS) setups including high-end ventilators, defibrillators, and vitals monitoring.</p>

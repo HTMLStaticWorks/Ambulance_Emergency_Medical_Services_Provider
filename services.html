@@ -12,6 +12,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <!-- Shared Style -->
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Services Page - Card Images */
+    .service-card-img-wrap {
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      border-radius: var(--radius-card);
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    .service-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card:hover .service-card-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    /* Button Responsiveness Override */
+    @media (max-width: 768px) {
+      .card .btn {
+        width: 100% !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -71,7 +99,9 @@
       <div class="grid-3">
         <!-- Card 1: BLS -->
         <div class="card fade-in-up">
-          <div class="card-icon" style="overflow: hidden; background: transparent;"><img src="https://images.unsplash.com/photo-1603398938378-e54eab446edd?auto=format&fit=crop&w=120&q=80" alt="BLS Ambulance" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-card);"></div>
+          <div class="service-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80" alt="BLS Ambulance">
+          </div>
           <h3>Basic Life Support (BLS)</h3>
           <div class="service-price">₹499 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
           <p class="text-muted" style="font-size: 0.9rem;">For patients who require simple medical transfer and non-critical monitoring.</p>
@@ -85,7 +115,9 @@
 
         <!-- Card 2: ALS -->
         <div class="card fade-in-up">
-          <div class="card-icon" style="overflow: hidden; background: transparent;"><img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=120&q=80" alt="ALS Ambulance" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-card);"></div>
+          <div class="service-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="ALS Ambulance">
+          </div>
           <h3>Advanced Life Support (ALS)</h3>
           <div class="service-price">₹999 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
           <p class="text-muted" style="font-size: 0.9rem;">For patients needing pre-hospital monitoring, IV therapy, and medication.</p>
@@ -99,7 +131,9 @@
 
         <!-- Card 3: ICU -->
         <div class="card fade-in-up">
-          <div class="card-icon" style="overflow: hidden; background: transparent;"><img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=120&q=80" alt="ICU Ambulance" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-card);"></div>
+          <div class="service-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=600&q=80" alt="ICU Ambulance">
+          </div>
           <h3>ICU Ambulance</h3>
           <div class="service-price">₹1,499 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
           <p class="text-muted" style="font-size: 0.9rem;">Advanced mobile ICU unit designed for highly critical cardiac or respiratory cases.</p>
@@ -113,7 +147,9 @@
 
         <!-- Card 4: Air Ambulance -->
         <div class="card fade-in-up">
-          <div class="card-icon" style="overflow: hidden; background: transparent;"><img src="https://images.unsplash.com/photo-1580137189272-c9379f8864fd?auto=format&fit=crop&w=120&q=80" alt="Air Ambulance" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-card);"></div>
+          <div class="service-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1580137189272-c9379f8864fd?auto=format&fit=crop&w=600&q=80" alt="Air Ambulance">
+          </div>
           <h3>Air Ambulance</h3>
           <div class="service-price">₹15,000 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
           <p class="text-muted" style="font-size: 0.9rem;">Long-distance critical patient evacuation via medically-configured private aircraft.</p>
@@ -127,7 +163,9 @@
 
         <!-- Card 5: Neonatal Transport -->
         <div class="card fade-in-up">
-          <div class="card-icon" style="overflow: hidden; background: transparent;"><img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=120&q=80" alt="Neonatal Transport" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-card);"></div>
+          <div class="service-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80" alt="Neonatal Transport">
+          </div>
           <h3>Neonatal Transport</h3>
           <div class="service-price">₹799 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">base fare</span></div>
           <p class="text-muted" style="font-size: 0.9rem;">Specifically built for transfer of newborns requiring incubators and special care.</p>
@@ -141,7 +179,9 @@
 
         <!-- Card 6: Event Medical Cover -->
         <div class="card fade-in-up">
-          <div class="card-icon" style="overflow: hidden; background: transparent;"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=120&q=80" alt="Event Medical Cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-card);"></div>
+          <div class="service-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80" alt="Event Medical Cover">
+          </div>
           <h3>Event Medical Cover</h3>
           <div class="service-price">₹2,999 <span style="font-size: 0.85rem; color: var(--gray); font-weight: 500;">/ event day</span></div>
           <p class="text-muted" style="font-size: 0.9rem;">Stationary medical standbys and response tents for sports events and corporate gathers.</p>

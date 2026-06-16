@@ -12,6 +12,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <!-- Shared Style -->
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Dashboard Page Specific Styles */
+    .bar-area {
+      height: 140px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
@@ -220,50 +230,66 @@
     <div class="container charts-grid">
       <!-- Bar Chart Card -->
       <div class="card fade-in-up">
-        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Weekly Calls Volume</h3>
-        <span style="font-size: 0.85rem; color: var(--gray);">Average incoming calls per day of week</span>
+        <div style="text-align: center; margin-bottom: 15px;">
+          <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Weekly Calls Volume</h3>
+          <span style="font-size: 0.85rem; color: var(--gray);">Average incoming calls per day of week</span>
+        </div>
         
-        <div class="bar-chart-container">
+        <div class="bar-chart-container" style="margin-top: 0;">
           <!-- Mon -->
           <div class="bar-wrapper">
             <span class="bar-val">140</span>
-            <div class="bar-column" style="height: 70%;"></div>
+            <div class="bar-area">
+              <div class="bar-column" style="height: 70%;"></div>
+            </div>
             <span class="bar-label">Mon</span>
           </div>
           <!-- Tue -->
           <div class="bar-wrapper">
             <span class="bar-val">170</span>
-            <div class="bar-column" style="height: 85%;"></div>
+            <div class="bar-area">
+              <div class="bar-column" style="height: 85%;"></div>
+            </div>
             <span class="bar-label">Tue</span>
           </div>
           <!-- Wed -->
           <div class="bar-wrapper">
             <span class="bar-val">120</span>
-            <div class="bar-column" style="height: 60%;"></div>
+            <div class="bar-area">
+              <div class="bar-column" style="height: 60%;"></div>
+            </div>
             <span class="bar-label">Wed</span>
           </div>
           <!-- Thu -->
           <div class="bar-wrapper">
             <span class="bar-val">190</span>
-            <div class="bar-column" style="height: 95%;"></div>
+            <div class="bar-area">
+              <div class="bar-column" style="height: 95%;"></div>
+            </div>
             <span class="bar-label">Thu</span>
           </div>
           <!-- Fri -->
           <div class="bar-wrapper">
             <span class="bar-val">160</span>
-            <div class="bar-column" style="height: 80%;"></div>
+            <div class="bar-area">
+              <div class="bar-column" style="height: 80%;"></div>
+            </div>
             <span class="bar-label">Fri</span>
           </div>
           <!-- Sat -->
           <div class="bar-wrapper">
             <span class="bar-val">100</span>
-            <div class="bar-column" style="height: 50%;"></div>
+            <div class="bar-area">
+              <div class="bar-column" style="height: 50%;"></div>
+            </div>
             <span class="bar-label">Sat</span>
           </div>
           <!-- Sun -->
           <div class="bar-wrapper">
             <span class="bar-val">80</span>
-            <div class="bar-column" style="height: 40%;"></div>
+            <div class="bar-area">
+              <div class="bar-column" style="height: 40%;"></div>
+            </div>
             <span class="bar-label">Sun</span>
           </div>
         </div>
