@@ -421,7 +421,9 @@ body.dark .control-btn:hover {
 
 .footer-brand h3 {
   color: var(--primary);
-  font-size: 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
