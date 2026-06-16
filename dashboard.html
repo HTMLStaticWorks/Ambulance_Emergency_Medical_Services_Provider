@@ -14,10 +14,50 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- SECTION 1: DASHBOARD HEADER BAR (inside page, below nav) -->
-  <header class="dashboard-bar" style="margin-top: 0;">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="dashboard-layout-container">
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <button id="sidebar-close-btn" class="sidebar-close-btn" style="display: none;" aria-label="Close sidebar menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="sidebar-profile">
+        <div class="profile-img-wrap">
+          <img src="founder_portrait.png" alt="Admin Profile" class="profile-avatar">
+        </div>
+        <div class="sidebar-profile-info">
+          <h4 style="margin-bottom: 4px; color: var(--text);">Dr. Alex Mercer</h4>
+          <span style="font-size: 0.8rem; color: var(--gray); font-weight: 600; text-transform: uppercase;">Chief Dispatcher</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+        <a href="index.html" class="sidebar-link"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="home1.html" class="sidebar-link"><i class="fa-solid fa-house-chimney-medical"></i> Home Alternate</a>
+        <a href="services.html" class="sidebar-link"><i class="fa-solid fa-truck-medical"></i> Services</a>
+        <a href="pricing.html" class="sidebar-link"><i class="fa-solid fa-tags"></i> Pricing</a>
+        <a href="about.html" class="sidebar-link"><i class="fa-solid fa-circle-info"></i> About Us</a>
+        <a href="contact.html" class="sidebar-link"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+        <a href="signup.html" class="sidebar-link"><i class="fa-solid fa-user-plus"></i> Patient Portal</a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="btn btn-logout" onclick="alert('Logging out...'); window.location.href='index.html';">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="dashboard-main-content">
+      <!-- SECTION 1: DASHBOARD HEADER BAR -->
+      <header class="dashboard-bar" style="margin-top: 0;">
     <div class="container dashboard-bar-content">
       <div style="display: flex; align-items: center; gap: 15px;">
+        <button id="dashboard-hamburger-btn" class="hamburger-btn" style="color: var(--white); background: transparent; border: none; font-size: 1.5rem; cursor: pointer; display: none; margin-right: 5px;" aria-label="Toggle sidebar menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
         <a href="index.html" class="logo" style="color: var(--white); font-weight: 700; margin-right: 15px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
           <span>🚑</span> AmbulancePro
         </a>
@@ -49,7 +89,7 @@
     <div class="container grid-4">
       <!-- Card 1 -->
       <div class="card fade-in-up" style="padding: 24px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap: 12px; margin-bottom: 10px;">
           <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Active Units</span>
           <i class="fa-solid fa-truck-medical text-primary" style="font-size: 1.2rem;"></i>
         </div>
@@ -59,7 +99,7 @@
 
       <!-- Card 2 -->
       <div class="card fade-in-up" style="padding: 24px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap: 12px; margin-bottom: 10px;">
           <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Today's Calls</span>
           <i class="fa-solid fa-phone text-accent" style="font-size: 1.2rem;"></i>
         </div>
@@ -69,7 +109,7 @@
 
       <!-- Card 3 -->
       <div class="card fade-in-up" style="padding: 24px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap: 12px; margin-bottom: 10px;">
           <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Patients Served</span>
           <i class="fa-solid fa-users text-primary" style="font-size: 1.2rem;"></i>
         </div>
@@ -79,7 +119,7 @@
 
       <!-- Card 4 -->
       <div class="card fade-in-up" style="padding: 24px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap: 12px; margin-bottom: 10px;">
           <span style="font-size: 0.85rem; color: var(--gray); font-weight:700; text-transform:uppercase;">Avg Response Time</span>
           <i class="fa-solid fa-clock text-accent" style="font-size: 1.2rem;"></i>
         </div>
@@ -346,6 +386,9 @@
   </section>
 
   <!-- FOOTER REMOVED -->
+
+  </main>
+</div>
 
   <!-- Unified JS -->
   <script src="js/main.js"></script>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance & Emergency Medical Services Provider | Log In</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Log in to your AmbulancePro account. Access your dispatch feed, account subscription, and health guides.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- SECTION 1: SPLIT LAYOUT -->
+  <div class="signup-wrapper" style="margin-top: 0;">
+    <!-- Left Half: Large Medical Image -->
+    <div class="signup-hero-side" style="background-image: url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1200&q=80');">
+      <div class="signup-hero-content">
+        <h2>Welcome Back to AmbulancePro</h2>
+        <p style="color: rgba(255, 255, 255, 0.95); text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); font-size: 1.05rem; max-width: 320px; margin: 0 auto;">Log in to access your administrative dashboard, monitor active dispatches, and manage patient records.</p>
+      </div>
+    </div>
+
+    <!-- Right Half: Log In Form -->
+    <div class="signup-form-side">
+      <div class="signup-form-card fade-in-up">
+        <!-- Brand logo & theme controls -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 15px;">
+          <a href="index.html" class="logo" style="font-weight: 700; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+            <span>🚑</span> AmbulancePro
+          </a>
+          <div style="display: flex; gap: 10px;">
+            <button id="theme-toggle" class="control-btn" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 6px 15px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--text); font-family: var(--font-display); font-size: 0.85rem; font-weight: 600;" aria-label="Toggle dark mode">
+              <i class="fa-solid fa-moon"></i>
+              <span class="btn-label">Dark</span>
+            </button>
+            <button id="rtl-toggle" class="control-btn" style="background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 6px 15px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--text); font-family: var(--font-display); font-size: 0.85rem; font-weight: 600;" aria-label="Toggle RTL layout">
+              <i class="fa-solid fa-globe"></i>
+              <span class="btn-label">RTL</span>
+            </button>
+          </div>
+        </div>
+        
+        <h2>Log In to Your Account</h2>
+        <p>Enter your credentials to access the coordination portal.</p>
+        
+        <!-- SECTION 2: LOG IN FORM -->
+        <form id="login-form" novalidate onsubmit="event.preventDefault(); alert('Login successful! Redirecting...'); window.location.href='dashboard.html';">
+          <div class="signup-grid" style="grid-template-columns: 1fr;">
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="form-group form-group-full" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" id="remember-me">
+                <span>Remember me</span>
+              </label>
+              <a href="#" style="color: var(--primary); font-size: 0.9rem; font-weight: 600;" onclick="alert('Password reset link sent to your email.');">Forgot Password?</a>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; padding: 15px 0; margin-top: 20px;">Log In</button>
+        </form>
+
+        <!-- SECTION 3: SOCIAL LOG IN -->
+        <div class="social-signup-wrap">
+          <div class="divider-text">or log in with</div>
+          <div class="social-btns">
+            <button class="btn btn-social" onclick="alert('Continuing with Google...')">
+              <i class="fa-brands fa-google" style="color: #ea4335; margin-right: 8px;"></i> Google
+            </button>
+            <button class="btn btn-social" onclick="alert('Continuing with Facebook...')">
+              <i class="fa-brands fa-facebook-f" style="color: #1877f2; margin-right: 8px;"></i> Facebook
+            </button>
+            <button class="btn btn-social" onclick="alert('Continuing with Apple...')">
+              <i class="fa-brands fa-apple" style="color: var(--text); margin-right: 8px;"></i> Apple
+            </button>
+          </div>
+        </div>
+
+        <!-- Go To Sign Up -->
+        <div style="text-align: center; margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px;">
+          <p style="font-size: 0.95rem;">Don't have an account? <a href="signup.html" style="color: var(--primary); font-weight: 700;">Sign Up Here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: SECURITY CERTIFICATIONS -->
+  <section class="section section-bg-light" style="padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container" style="display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; text-align:center;">
+      <div style="font-weight: 700; color: var(--text);"><i class="fa-solid fa-lock text-primary"></i> 256-bit Secure</div>
+      <div style="font-weight: 700; color: var(--text);"><i class="fa-solid fa-circle-check text-primary"></i> Encrypted Session</div>
+      <div style="font-weight: 700; color: var(--text);"><i class="fa-solid fa-hospital text-primary"></i> HIPPA Compliant</div>
+    </div>
+  </section>
+
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
