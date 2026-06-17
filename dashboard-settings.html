@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AmbulancePro | Admin Settings</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Dashboard system and profile configurations.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Settings Page Specific Styles */
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    @media (max-width: 992px) {
+      .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+    @media (max-width: 576px) {
+      .settings-content-card {
+        padding: 20px 15px !important;
+      }
+    }
+    .settings-nav-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+    .settings-tab-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 15px;
+      background: transparent;
+      border: none;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--text);
+      border-radius: var(--radius-card);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+    }
+    .settings-tab-btn.active, .settings-tab-btn:hover {
+      background-color: rgba(230, 57, 70, 0.08);
+      color: var(--primary);
+    }
+    .settings-content-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+    .settings-form-section {
+      display: none;
+    }
+    .settings-form-section.active {
+      display: block;
+    }
+    .settings-toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .settings-toggle-row:last-child {
+      border-bottom: none;
+    }
+    /* Simple switch wrapper */
+    .switch-label {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+      cursor: pointer;
+    }
+    .switch-label input {
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .switch-slider {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--border);
+      transition: .4s;
+      border-radius: 24px;
+    }
+    .switch-slider::before {
+      content: "";
+      position: absolute;
+      height: 16px; width: 16px;
+      left: 4px; bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .switch-slider {
+      background-color: var(--primary);
+    }
+    input:checked + .switch-slider::before {
+      transform: translateX(22px);
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="dashboard-layout-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <button class="sidebar-close-btn" id="sidebar-close-btn" style="display: none;" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="sidebar-profile">
+        <div class="profile-img-wrap">
+          <img src="founder_portrait.png" alt="Admin Avatar" class="profile-avatar">
+        </div>
+        <h4>Admin User</h4>
+        <span>Fleet Director</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="dashboard-map.html" class="sidebar-link">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Live Map</span>
+        </a>
+        <a href="dashboard-logs.html" class="sidebar-link">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Dispatch Logs</span>
+        </a>
+        <a href="dashboard-patients.html" class="sidebar-link">
+          <i class="fa-solid fa-hospital-user"></i>
+          <span>Patients</span>
+        </a>
+        <a href="dashboard-settings.html" class="sidebar-link active">
+          <i class="fa-solid fa-gears"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="btn-logout" onclick="alert('Logging out...'); window.location.href='index.html';">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="dashboard-main-content">
+      <!-- DASHBOARD HEADER BAR -->
+      <header class="dashboard-bar" style="margin-top: 0;">
+        <div class="container dashboard-bar-content">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <button id="dashboard-hamburger-btn" class="btn btn-secondary btn-small" style="display: none; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-size: 1.1rem; padding: 6px 12px; border-radius: 4px; cursor: pointer;" aria-label="Open sidebar menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo" style="color: var(--white); font-weight: 700; margin-right: 15px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+              <span>🚑</span> AmbulancePro
+            </a>
+            <h2 style="color: var(--white); font-size: 1.4rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">Admin Settings</h2>
+          </div>
+          
+          <div class="dashboard-time">
+            <span id="dashboard-date">15 June 2026</span>
+            <span class="dash-clock" id="dashboard-clock">00:00:00 AM</span>
+            
+            <div class="dashboard-actions">
+              <button id="theme-toggle" class="btn btn-secondary btn-small" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+                <span class="btn-label">Dark</span>
+              </button>
+              <button id="rtl-toggle" class="btn btn-secondary btn-small" aria-label="Toggle RTL layout">
+                <i class="fa-solid fa-globe"></i>
+                <span class="btn-label">RTL</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- SETTINGS MAIN GRID -->
+      <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container">
+          
+          <div class="settings-grid">
+            <!-- Left panel navigator -->
+            <div class="settings-nav-card">
+              <button class="settings-tab-btn active" id="tab-profile-btn" onclick="switchTab('profile')">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profile Settings</span>
+              </button>
+              <button class="settings-tab-btn" id="tab-system-btn" onclick="switchTab('system')">
+                <i class="fa-solid fa-sliders"></i>
+                <span>System Configurations</span>
+              </button>
+            </div>
+
+            <!-- Right panel details -->
+            <div class="settings-content-card">
+              <!-- Section 1: Profile Settings -->
+              <div class="settings-form-section active" id="sec-profile">
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 25px; border-bottom:1px solid var(--border); padding-bottom:12px;">Edit Profile details</h3>
+                
+                <form onsubmit="event.preventDefault(); alert('Profile information saved.');">
+                  <div class="grid-2-col">
+                    <div class="form-group">
+                      <label for="firstName">First Name</label>
+                      <input type="text" id="firstName" class="form-control" value="Admin" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input type="text" id="lastName" class="form-control" value="User" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="adminEmail">Email Address</label>
+                    <input type="email" id="adminEmail" class="form-control" value="director@ambulancepro.in" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="adminRole">Title Designation</label>
+                    <input type="text" id="adminRole" class="form-control" value="Fleet Director" readonly>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Save Profile Changes</button>
+                </form>
+              </div>
+
+              <!-- Section 2: System Settings -->
+              <div class="settings-form-section" id="sec-system">
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 25px; border-bottom:1px solid var(--border); padding-bottom:12px;">App Configurations</h3>
+                
+                <div class="settings-toggle-row">
+                  <div>
+                    <strong style="display:block; margin-bottom:4px; font-size: 0.95rem;">Audible Siren Alerts</strong>
+                    <span style="font-size:0.8rem; color: var(--gray);">Play alarm sound upon receiving high priority emergencies</span>
+                  </div>
+                  <label class="switch-label">
+                    <input type="checkbox" checked>
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div>
+                    <strong style="display:block; margin-bottom:4px; font-size: 0.95rem;">Desktop Push Notifications</strong>
+                    <span style="font-size:0.8rem; color: var(--gray);">Show browser layout dispatch prompts in real-time</span>
+                  </div>
+                  <label class="switch-label">
+                    <input type="checkbox" checked>
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="settings-toggle-row">
+                  <div>
+                    <strong style="display:block; margin-bottom:4px; font-size: 0.95rem;">Email Dispatch Sync</strong>
+                    <span style="font-size:0.8rem; color: var(--gray);">Forward telemetry reports to central email directory</span>
+                  </div>
+                  <label class="switch-label">
+                    <input type="checkbox">
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+
+                <div class="form-group" style="margin-top:25px;">
+                  <label for="syncTimer">Telemetry Sync Interval</label>
+                  <select id="syncTimer" class="form-control" style="max-width: 250px;" onchange="alert('Polling sync interval updated.')">
+                    <option value="4">Every 4 seconds (Real-time)</option>
+                    <option value="10">Every 10 seconds</option>
+                    <option value="30">Every 30 seconds</option>
+                    <option value="60">Every 60 seconds</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      // Buttons active switch
+      document.querySelectorAll('.settings-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('tab-' + tabId + '-btn').classList.add('active');
+
+      // Sections active switch
+      document.querySelectorAll('.settings-form-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('sec-' + tabId).classList.add('active');
+    }
+  </script>
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

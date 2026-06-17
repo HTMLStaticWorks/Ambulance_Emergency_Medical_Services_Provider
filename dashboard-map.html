@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AmbulancePro | Live Fleet Map</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Live GPS tracking and fleet dispatch control portal.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Live Map Specific Styles */
+    .map-dashboard-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    @media (max-width: 992px) {
+      .map-dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .live-map-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .map-container {
+      width: 100%;
+      height: 480px;
+      background: radial-gradient(circle at center, #1b263b 0%, #0d1b2a 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+    }
+    body.dark .map-container {
+      background: radial-gradient(circle at center, #0d1b2a 0%, #050b14 100%);
+    }
+    .map-grid-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-size: 30px 30px;
+      background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    }
+    .zone-label {
+      position: absolute;
+      color: rgba(255,255,255,0.4);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+    .pulse-marker {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 5;
+      transform: translate(-50%, -50%);
+      transition: top 2s ease-in-out, left 2s ease-in-out;
+    }
+    .pulse-marker::before {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background-color: inherit;
+      opacity: 0.8;
+      animation: ripple-pulse 1.8s infinite ease-out;
+    }
+    .pulse-marker::after {
+      content: '🚑';
+      position: absolute;
+      font-size: 1rem;
+      top: -15px;
+      left: 5px;
+    }
+    @keyframes ripple-pulse {
+      0% { transform: scale(0.6); opacity: 1; }
+      100% { transform: scale(2.8); opacity: 0; }
+    }
+    .pulse-marker.en-route { background-color: #f1c40f; }
+    .pulse-marker.on-scene { background-color: #e63946; }
+    .pulse-marker.available { background-color: #2ecc71; }
+    .pulse-marker.returning { background-color: #3498db; }
+
+    .telemetry-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .telemetry-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .telemetry-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      overflow-y: auto;
+      max-height: 400px;
+      padding-right: 5px;
+    }
+    .telemetry-item {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      background-color: var(--bg);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .telemetry-item:hover, .telemetry-item.selected {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+      background-color: rgba(230, 57, 70, 0.03);
+    }
+    .map-filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .filter-pill {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-pill.active {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+    }
+    .filter-pill:hover:not(.active) {
+      background-color: var(--border);
+    }
+    .map-alert-banner {
+      background: linear-gradient(90deg, rgba(230, 57, 70, 0.15) 0%, rgba(29, 53, 87, 0.05) 100%);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-card);
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="dashboard-layout-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <button class="sidebar-close-btn" id="sidebar-close-btn" style="display: none;" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="sidebar-profile">
+        <div class="profile-img-wrap">
+          <img src="founder_portrait.png" alt="Admin Avatar" class="profile-avatar">
+        </div>
+        <h4>Admin User</h4>
+        <span>Fleet Director</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="dashboard-map.html" class="sidebar-link active">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Live Map</span>
+        </a>
+        <a href="dashboard-logs.html" class="sidebar-link">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Dispatch Logs</span>
+        </a>
+        <a href="dashboard-patients.html" class="sidebar-link">
+          <i class="fa-solid fa-hospital-user"></i>
+          <span>Patients</span>
+        </a>
+        <a href="dashboard-settings.html" class="sidebar-link">
+          <i class="fa-solid fa-gears"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="btn-logout" onclick="alert('Logging out...'); window.location.href='index.html';">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="dashboard-main-content">
+      <!-- DASHBOARD HEADER BAR -->
+      <header class="dashboard-bar" style="margin-top: 0;">
+        <div class="container dashboard-bar-content">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <button id="dashboard-hamburger-btn" class="btn btn-secondary btn-small" style="display: none; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-size: 1.1rem; padding: 6px 12px; border-radius: 4px; cursor: pointer;" aria-label="Open sidebar menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo" style="color: var(--white); font-weight: 700; margin-right: 15px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+              <span>🚑</span> AmbulancePro
+            </a>
+            <h2 style="color: var(--white); font-size: 1.4rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">Live Fleet Tracker Map</h2>
+          </div>
+          
+          <div class="dashboard-time">
+            <span id="dashboard-date">15 June 2026</span>
+            <span class="dash-clock" id="dashboard-clock">00:00:00 AM</span>
+            
+            <div class="dashboard-actions">
+              <button id="theme-toggle" class="btn btn-secondary btn-small" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+                <span class="btn-label">Dark</span>
+              </button>
+              <button id="rtl-toggle" class="btn btn-secondary btn-small" aria-label="Toggle RTL layout">
+                <i class="fa-solid fa-globe"></i>
+                <span class="btn-label">RTL</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- LIVE TELEMETRY CONTENT -->
+      <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container">
+          
+          <!-- Urgent banner alert -->
+          <div class="map-alert-banner">
+            <div>
+              <i class="fa-solid fa-circle-radiation text-primary" style="margin-right: 10px; font-size: 1.15rem;"></i>
+              <span>Zone 3: Adyar reports critical respiratory distress emergency. Unit A12 in response.</span>
+            </div>
+            <button class="btn btn-primary btn-small" onclick="alert('Rerouting telemetry to unit A12.')">Focus Unit</button>
+          </div>
+
+          <!-- Filters -->
+          <div class="map-filter-bar">
+            <button class="filter-pill active" onclick="filterMap('all', this)">All Units (4)</button>
+            <button class="filter-pill" onclick="filterMap('en-route', this)">En Route</button>
+            <button class="filter-pill" onclick="filterMap('on-scene', this)">On Scene</button>
+            <button class="filter-pill" onclick="filterMap('available', this)">Available</button>
+            <button class="filter-pill" onclick="filterMap('returning', this)">Returning</button>
+          </div>
+
+          <!-- Grid layout -->
+          <div class="map-dashboard-grid">
+            <!-- Left: Map -->
+            <div class="live-map-card">
+              <div class="map-container" id="mapContainer">
+                <div class="map-grid-overlay"></div>
+                
+                <!-- Zone Labels -->
+                <div class="zone-label" style="top: 15%; left: 15%;">Anna Nagar</div>
+                <div class="zone-label" style="top: 25%; left: 60%;">T. Nagar</div>
+                <div class="zone-label" style="top: 45%; left: 20%;">Guindy</div>
+                <div class="zone-label" style="top: 75%; left: 35%;">Velachery</div>
+                <div class="zone-label" style="top: 65%; left: 70%;">Adyar</div>
+                <div class="zone-label" style="top: 35%; left: 80%;">Mylapore</div>
+
+                <!-- Animated Unit Markers -->
+                <div class="pulse-marker en-route" id="marker-a12" style="top: 60%; left: 65%;" onclick="selectUnit('a12')"></div>
+                <div class="pulse-marker on-scene" id="marker-b07" style="top: 28%; left: 58%;" onclick="selectUnit('b07')"></div>
+                <div class="pulse-marker available" id="marker-c03" style="top: 48%; left: 25%;" onclick="selectUnit('c03')"></div>
+                <div class="pulse-marker returning" id="marker-d15" style="top: 72%; left: 40%;" onclick="selectUnit('d15')"></div>
+              </div>
+            </div>
+
+            <!-- Right: Telemetry Sidepanel -->
+            <div class="telemetry-card">
+              <div class="telemetry-header">
+                <h3 style="font-size: 1.15rem; font-weight: 700;">Vehicle Status</h3>
+                <span class="status-badge available" style="margin-bottom:0;">Live Feed</span>
+              </div>
+
+              <div class="telemetry-list">
+                <!-- Unit A12 -->
+                <div class="telemetry-item selected" id="tel-a12" onclick="selectUnit('a12')">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 5px;">
+                    <strong style="font-size: 0.95rem;">Unit A12</strong>
+                    <span class="status-badge en-route" style="margin-bottom: 0;">En Route</span>
+                  </div>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Location:</strong> Adyar Zone 3</p>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Speed:</strong> 65 km/h &bull; <strong>ETA:</strong> 4 min</p>
+                  <span style="font-size: 0.75rem; color: var(--primary); font-weight:700;"><i class="fa-solid fa-compass"></i> Heading East &bull; Lat 13.0012, Lng 80.2565</span>
+                </div>
+
+                <!-- Unit B07 -->
+                <div class="telemetry-item" id="tel-b07" onclick="selectUnit('b07')">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 5px;">
+                    <strong style="font-size: 0.95rem;">Unit B07</strong>
+                    <span class="status-badge on-scene" style="margin-bottom: 0;">On Scene</span>
+                  </div>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Location:</strong> T. Nagar Zone 1</p>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Speed:</strong> 0 km/h &bull; <strong>ETA:</strong> Active Scene</p>
+                  <span style="font-size: 0.75rem; color: var(--accent); font-weight:700;"><i class="fa-solid fa-compass"></i> Parked &bull; Lat 13.0418, Lng 80.2337</span>
+                </div>
+
+                <!-- Unit C03 -->
+                <div class="telemetry-item" id="tel-c03" onclick="selectUnit('c03')">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 5px;">
+                    <strong style="font-size: 0.95rem;">Unit C03</strong>
+                    <span class="status-badge available" style="margin-bottom: 0;">Available</span>
+                  </div>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Location:</strong> Guindy Base</p>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Speed:</strong> 0 km/h &bull; <strong>ETA:</strong> Standby</p>
+                  <span style="font-size: 0.75rem; color: var(--gray); font-weight:700;"><i class="fa-solid fa-compass"></i> Stationed &bull; Lat 13.0067, Lng 80.2206</span>
+                </div>
+
+                <!-- Unit D15 -->
+                <div class="telemetry-item" id="tel-d15" onclick="selectUnit('d15')">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 5px;">
+                    <strong style="font-size: 0.95rem;">Unit D15</strong>
+                    <span class="status-badge returning" style="margin-bottom: 0;">Returning</span>
+                  </div>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Location:</strong> Velachery Rd</p>
+                  <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 4px;"><strong>Speed:</strong> 42 km/h &bull; <strong>ETA:</strong> 12 min</p>
+                  <span style="font-size: 0.75rem; color: #3498db; font-weight:700;"><i class="fa-solid fa-compass"></i> Heading North &bull; Lat 12.9815, Lng 80.2210</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Script for Map Telemetry Toggles -->
+  <script>
+    function selectUnit(unitId) {
+      // Highlight telemetry list item
+      document.querySelectorAll('.telemetry-item').forEach(el => el.classList.remove('selected'));
+      const activeItem = document.getElementById('tel-' + unitId);
+      if (activeItem) {
+        activeItem.classList.add('selected');
+        activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Pulse the marker and animate map view centering slightly
+      document.querySelectorAll('.pulse-marker').forEach(marker => {
+        marker.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+      const activeMarker = document.getElementById('marker-' + unitId);
+      if (activeMarker) {
+        activeMarker.style.transform = 'translate(-50%, -50%) scale(1.6)';
+        setTimeout(() => {
+          activeMarker.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 1000);
+      }
+    }
+
+    function filterMap(status, pillEl) {
+      document.querySelectorAll('.filter-pill').forEach(pill => pill.classList.remove('active'));
+      pillEl.classList.add('active');
+
+      const markers = {
+        'a12': 'en-route',
+        'b07': 'on-scene',
+        'c03': 'available',
+        'd15': 'returning'
+      };
+
+      Object.keys(markers).forEach(id => {
+        const marker = document.getElementById('marker-' + id);
+        const item = document.getElementById('tel-' + id);
+        
+        if (status === 'all' || markers[id] === status) {
+          if (marker) marker.style.display = 'block';
+          if (item) item.style.display = 'block';
+        } else {
+          if (marker) marker.style.display = 'none';
+          if (item) item.style.display = 'none';
+        }
+      });
+    }
+
+    // Animate mock movements slightly
+    setInterval(() => {
+      const a12 = document.getElementById('marker-a12');
+      if (a12) {
+        // Move slightly around top: 60%, left: 65%
+        const newTop = 60 + (Math.random() * 4 - 2);
+        const newLeft = 65 + (Math.random() * 4 - 2);
+        a12.style.top = newTop + '%';
+        a12.style.left = newLeft + '%';
+      }
+
+      const d15 = document.getElementById('marker-d15');
+      if (d15) {
+        const newTop = 72 + (Math.random() * 4 - 2);
+        const newLeft = 40 + (Math.random() * 4 - 2);
+        d15.style.top = newTop + '%';
+        d15.style.left = newLeft + '%';
+      }
+    }, 4000);
+  </script>
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

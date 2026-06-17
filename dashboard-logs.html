@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AmbulancePro | Dispatch Logs</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Logs ledger database and emergency dispatcher registration registry.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Logs Page Specific Styles */
+    .logs-layout-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    @media (max-width: 1100px) {
+      .logs-layout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .logs-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .search-input-wrap {
+      position: relative;
+      flex-grow: 1;
+      max-width: 350px;
+    }
+    .search-input-wrap i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+    }
+    .search-input-wrap input {
+      padding-left: 40px;
+    }
+    .priority-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+    }
+    .priority-badge.critical { background-color: rgba(230, 57, 70, 0.15); color: var(--primary); }
+    .priority-badge.high { background-color: rgba(241, 196, 15, 0.15); color: #d4ac0d; }
+    .priority-badge.medium { background-color: rgba(52, 152, 219, 0.15); color: #2980b9; }
+    .priority-badge.low { background-color: rgba(46, 204, 113, 0.15); color: #27ae60; }
+  </style>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="dashboard-layout-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <button class="sidebar-close-btn" id="sidebar-close-btn" style="display: none;" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="sidebar-profile">
+        <div class="profile-img-wrap">
+          <img src="founder_portrait.png" alt="Admin Avatar" class="profile-avatar">
+        </div>
+        <h4>Admin User</h4>
+        <span>Fleet Director</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="dashboard-map.html" class="sidebar-link">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Live Map</span>
+        </a>
+        <a href="dashboard-logs.html" class="sidebar-link active">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Dispatch Logs</span>
+        </a>
+        <a href="dashboard-patients.html" class="sidebar-link">
+          <i class="fa-solid fa-hospital-user"></i>
+          <span>Patients</span>
+        </a>
+        <a href="dashboard-settings.html" class="sidebar-link">
+          <i class="fa-solid fa-gears"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="btn-logout" onclick="alert('Logging out...'); window.location.href='index.html';">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="dashboard-main-content">
+      <!-- DASHBOARD HEADER BAR -->
+      <header class="dashboard-bar" style="margin-top: 0;">
+        <div class="container dashboard-bar-content">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <button id="dashboard-hamburger-btn" class="btn btn-secondary btn-small" style="display: none; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-size: 1.1rem; padding: 6px 12px; border-radius: 4px; cursor: pointer;" aria-label="Open sidebar menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo" style="color: var(--white); font-weight: 700; margin-right: 15px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+              <span>🚑</span> AmbulancePro
+            </a>
+            <h2 style="color: var(--white); font-size: 1.4rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">Dispatch Logs</h2>
+          </div>
+          
+          <div class="dashboard-time">
+            <span id="dashboard-date">15 June 2026</span>
+            <span class="dash-clock" id="dashboard-clock">00:00:00 AM</span>
+            
+            <div class="dashboard-actions">
+              <button id="theme-toggle" class="btn btn-secondary btn-small" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+                <span class="btn-label">Dark</span>
+              </button>
+              <button id="rtl-toggle" class="btn btn-secondary btn-small" aria-label="Toggle RTL layout">
+                <i class="fa-solid fa-globe"></i>
+                <span class="btn-label">RTL</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- REGISTRY CONTENT -->
+      <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container">
+          
+          <div class="logs-layout-grid">
+            <!-- Left: Logs registry table -->
+            <div class="logs-card">
+              <div class="table-toolbar">
+                <div class="search-input-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="logSearch" class="form-control" placeholder="Search by Unit, Driver, or Destination..." oninput="filterLogs()">
+                </div>
+
+                <div class="map-filter-bar" style="margin-bottom:0;">
+                  <button class="filter-pill active" onclick="filterTable('all', this)">All</button>
+                  <button class="filter-pill" onclick="filterTable('en-route', this)">En Route</button>
+                  <button class="filter-pill" onclick="filterTable('on-scene', this)">On Scene</button>
+                  <button class="filter-pill" onclick="filterTable('available', this)">Available</button>
+                  <button class="filter-pill" onclick="filterTable('returning', this)">Returning</button>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="comparison-table" id="dispatchTable" style="box-shadow: none; border:none; border-radius: 0;">
+                  <thead>
+                    <tr>
+                      <th>Unit</th>
+                      <th>Driver</th>
+                      <th>Destination</th>
+                      <th>Priority</th>
+                      <th>Status</th>
+                      <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="log-row" data-status="en-route">
+                      <td style="font-weight: 700;">Unit A12</td>
+                      <td>R. Sharma</td>
+                      <td>Adyar</td>
+                      <td><span class="priority-badge critical">Critical</span></td>
+                      <td><span class="status-badge en-route">En Route</span></td>
+                      <td style="color: var(--gray); font-size: 0.85rem;">13:16:45</td>
+                    </tr>
+                    <tr class="log-row" data-status="on-scene">
+                      <td style="font-weight: 700;">Unit B07</td>
+                      <td>K. Patel</td>
+                      <td>T. Nagar</td>
+                      <td><span class="priority-badge high">High</span></td>
+                      <td><span class="status-badge on-scene">On Scene</span></td>
+                      <td style="color: var(--gray); font-size: 0.85rem;">12:55:12</td>
+                    </tr>
+                    <tr class="log-row" data-status="available">
+                      <td style="font-weight: 700;">Unit C03</td>
+                      <td>M. Singh</td>
+                      <td>Guindy</td>
+                      <td><span class="priority-badge low">Low</span></td>
+                      <td><span class="status-badge available">Available</span></td>
+                      <td style="color: var(--gray); font-size: 0.85rem;">12:30:00</td>
+                    </tr>
+                    <tr class="log-row" data-status="returning">
+                      <td style="font-weight: 700;">Unit D15</td>
+                      <td>S. Sen</td>
+                      <td>Velachery</td>
+                      <td><span class="priority-badge medium">Medium</span></td>
+                      <td><span class="status-badge returning">Returning</span></td>
+                      <td style="color: var(--gray); font-size: 0.85rem;">12:15:30</td>
+                    </tr>
+                    <tr class="log-row" data-status="available">
+                      <td style="font-weight: 700;">Unit E02</td>
+                      <td>P. Roy</td>
+                      <td>Mylapore</td>
+                      <td><span class="priority-badge low">Low</span></td>
+                      <td><span class="status-badge available">Available</span></td>
+                      <td style="color: var(--gray); font-size: 0.85rem;">11:45:10</td>
+                    </tr>
+                    <tr class="log-row" data-status="en-route">
+                      <td style="font-weight: 700;">Unit F09</td>
+                      <td>A. Das</td>
+                      <td>Tambaram</td>
+                      <td><span class="priority-badge high">High</span></td>
+                      <td><span class="status-badge en-route">En Route</span></td>
+                      <td style="color: var(--gray); font-size: 0.85rem;">11:32:00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Right: Dispatch Form -->
+            <div class="card" style="height: fit-content;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px;"><i class="fa-solid fa-circle-plus text-primary"></i> Dispatch New Unit</h3>
+              
+              <form id="dispatchForm" onsubmit="submitDispatch(event)">
+                <div class="form-group">
+                  <label for="unitSelect">Select Ambulance Unit</label>
+                  <select id="unitSelect" class="form-control" required>
+                    <option value="" disabled selected>Select active unit...</option>
+                    <option value="Unit G11">Unit G11 (ALS)</option>
+                    <option value="Unit H05">Unit H05 (BLS)</option>
+                    <option value="Unit I24">Unit I24 (ICU)</option>
+                    <option value="Unit J18">Unit J18 (BLS)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="driverName">Assign Driver</label>
+                  <input type="text" id="driverName" class="form-control" placeholder="Enter driver full name" required minlength="3">
+                </div>
+
+                <div class="form-group">
+                  <label for="destination">Destination Ward / Zone</label>
+                  <input type="text" id="destination" class="form-control" placeholder="e.g. Anna Nagar" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="priority">Priority Severity Level</label>
+                  <select id="priority" class="form-control" required>
+                    <option value="critical">Critical (Trauma/Cardiac)</option>
+                    <option value="high">High (Injury/Stroke)</option>
+                    <option value="medium">Medium (Breathing issues)</option>
+                    <option value="low">Low (General Transfer)</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Initiate Dispatch</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    let activeFilter = 'all';
+
+    function filterTable(status, pillEl) {
+      document.querySelectorAll('.filter-pill').forEach(pill => pill.classList.remove('active'));
+      pillEl.classList.add('active');
+      activeFilter = status;
+      filterLogs();
+    }
+
+    function filterLogs() {
+      const query = document.getElementById('logSearch').value.toLowerCase();
+      const rows = document.querySelectorAll('.log-row');
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const status = row.getAttribute('data-status');
+        
+        const matchesQuery = text.includes(query);
+        const matchesStatus = (activeFilter === 'all' || status === activeFilter);
+
+        if (matchesQuery && matchesStatus) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function submitDispatch(e) {
+      e.preventDefault();
+      
+      const unit = document.getElementById('unitSelect').value;
+      const driver = document.getElementById('driverName').value;
+      const dest = document.getElementById('destination').value;
+      const priority = document.getElementById('priority').value;
+
+      // Priority classes mapping
+      const priorityLabel = priority.charAt(0).toUpperCase() + priority.slice(1);
+      
+      // Get current system time formatted as HH:MM:SS
+      const now = new Date();
+      const timestamp = String(now.getHours()).padStart(2, '0') + ':' + 
+                        String(now.getMinutes()).padStart(2, '0') + ':' + 
+                        String(now.getSeconds()).padStart(2, '0');
+
+      const tbody = document.querySelector('#dispatchTable tbody');
+      const tr = document.createElement('tr');
+      tr.className = 'log-row';
+      tr.setAttribute('data-status', 'en-route');
+
+      tr.innerHTML = `
+        <td style="font-weight: 700;">${unit}</td>
+        <td>${driver}</td>
+        <td>${dest}</td>
+        <td><span class="priority-badge ${priority}">${priorityLabel}</span></td>
+        <td><span class="status-badge en-route">En Route</span></td>
+        <td style="color: var(--gray); font-size: 0.85rem;">${timestamp}</td>
+      `;
+
+      // Prepend to show immediately at the top
+      tbody.insertBefore(tr, tbody.firstChild);
+
+      // Reset form
+      document.getElementById('dispatchForm').reset();
+      
+      alert('Unit ' + unit + ' has been dispatched to ' + dest + ' with priority level ' + priorityLabel.toUpperCase());
+      filterLogs();
+    }
+  </script>
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

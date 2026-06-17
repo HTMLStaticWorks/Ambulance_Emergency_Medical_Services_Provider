@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AmbulancePro | Patients Directory</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚑</text></svg>">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Patient admission directory logs ledger for EMT operators.">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Patients Page Specific Styles */
+    .patients-layout-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    @media (max-width: 992px) {
+      .patients-layout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .patient-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .patient-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .patient-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .patient-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-left: 4px solid var(--primary);
+    }
+    .patient-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    .patient-name-wrap h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .patient-details-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+    .patient-vital-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .patient-vital-badge.critical { background-color: rgba(230, 57, 70, 0.1); color: var(--primary); }
+    .patient-vital-badge.semi-critical { background-color: rgba(241, 196, 15, 0.1); color: #d4ac0d; }
+    .patient-vital-badge.stable { background-color: rgba(46, 204, 113, 0.1); color: #2ecc71; }
+  </style>
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <div class="dashboard-layout-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <button class="sidebar-close-btn" id="sidebar-close-btn" style="display: none;" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="sidebar-profile">
+        <div class="profile-img-wrap">
+          <img src="founder_portrait.png" alt="Admin Avatar" class="profile-avatar">
+        </div>
+        <h4>Admin User</h4>
+        <span>Fleet Director</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="dashboard-map.html" class="sidebar-link">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Live Map</span>
+        </a>
+        <a href="dashboard-logs.html" class="sidebar-link">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Dispatch Logs</span>
+        </a>
+        <a href="dashboard-patients.html" class="sidebar-link active">
+          <i class="fa-solid fa-hospital-user"></i>
+          <span>Patients</span>
+        </a>
+        <a href="dashboard-settings.html" class="sidebar-link">
+          <i class="fa-solid fa-gears"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="btn-logout" onclick="alert('Logging out...'); window.location.href='index.html';">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="dashboard-main-content">
+      <!-- DASHBOARD HEADER BAR -->
+      <header class="dashboard-bar" style="margin-top: 0;">
+        <div class="container dashboard-bar-content">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <button id="dashboard-hamburger-btn" class="btn btn-secondary btn-small" style="display: none; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-size: 1.1rem; padding: 6px 12px; border-radius: 4px; cursor: pointer;" aria-label="Open sidebar menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo" style="color: var(--white); font-weight: 700; margin-right: 15px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
+              <span>🚑</span> AmbulancePro
+            </a>
+            <h2 style="color: var(--white); font-size: 1.4rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">Patients Directory</h2>
+          </div>
+          
+          <div class="dashboard-time">
+            <span id="dashboard-date">15 June 2026</span>
+            <span class="dash-clock" id="dashboard-clock">00:00:00 AM</span>
+            
+            <div class="dashboard-actions">
+              <button id="theme-toggle" class="btn btn-secondary btn-small" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+                <span class="btn-label">Dark</span>
+              </button>
+              <button id="rtl-toggle" class="btn btn-secondary btn-small" aria-label="Toggle RTL layout">
+                <i class="fa-solid fa-globe"></i>
+                <span class="btn-label">RTL</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- REGISTRY CONTENT -->
+      <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container">
+          
+          <div class="patients-layout-grid">
+            <!-- Left: Card listing -->
+            <div>
+              <div class="table-toolbar" style="margin-bottom:20px;">
+                <div class="search-input-wrap" style="max-width: 100%;">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="patientSearch" class="form-control" placeholder="Search by Patient Name, ID, or Case Type..." oninput="filterPatients()">
+                </div>
+              </div>
+
+              <div class="patient-cards-grid" id="patientCardsWrap">
+                <!-- Card 1 -->
+                <div class="patient-card" data-search="john doe p10428 cardiac arrest critical">
+                  <div class="patient-card-header">
+                    <div class="patient-name-wrap">
+                      <h3>John Doe</h3>
+                      <span style="font-size:0.75rem; color: var(--gray); font-weight:700;">ID: P10428</span>
+                    </div>
+                    <span class="patient-vital-badge critical">Critical</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Age / Gender:</strong> 64 / Male</span>
+                    <span><strong>Case:</strong> Cardiac Arrest</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Transport Unit:</strong> Unit A12 (ALS)</span>
+                    <span><strong>Destination:</strong> Apollo Hospital</span>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="patient-card" data-search="sarah connor p10429 fractures semi-critical">
+                  <div class="patient-card-header">
+                    <div class="patient-name-wrap">
+                      <h3>Sarah Connor</h3>
+                      <span style="font-size:0.75rem; color: var(--gray); font-weight:700;">ID: P10429</span>
+                    </div>
+                    <span class="patient-vital-badge semi-critical">Semi-Critical</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Age / Gender:</strong> 42 / Female</span>
+                    <span><strong>Case:</strong> Fractures (Trauma)</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Transport Unit:</strong> Unit B07 (BLS)</span>
+                    <span><strong>Destination:</strong> Fortis Hospital</span>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="patient-card" data-search="dev patel p10430 asthma attack stable">
+                  <div class="patient-card-header">
+                    <div class="patient-name-wrap">
+                      <h3>Dev Patel</h3>
+                      <span style="font-size:0.75rem; color: var(--gray); font-weight:700;">ID: P10430</span>
+                    </div>
+                    <span class="patient-vital-badge stable">Stable</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Age / Gender:</strong> 29 / Male</span>
+                    <span><strong>Case:</strong> Severe Asthma Attack</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Transport Unit:</strong> Unit C03 (BLS)</span>
+                    <span><strong>Destination:</strong> General Hospital</span>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="patient-card" data-search="priya sen p10431 neonatal care critical">
+                  <div class="patient-card-header">
+                    <div class="patient-name-wrap">
+                      <h3>Infant of Priya Sen</h3>
+                      <span style="font-size:0.75rem; color: var(--gray); font-weight:700;">ID: P10431</span>
+                    </div>
+                    <span class="patient-vital-badge critical">Critical</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Age / Gender:</strong> 2 Days / Female</span>
+                    <span><strong>Case:</strong> Neonatal Care</span>
+                  </div>
+                  <div class="patient-details-row">
+                    <span><strong>Transport Unit:</strong> Unit D15 (ICU)</span>
+                    <span><strong>Destination:</strong> Children's Hospital</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Add patient form -->
+            <div class="card" style="height: fit-content;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px;"><i class="fa-solid fa-user-plus text-primary"></i> Register New Patient</h3>
+              
+              <form id="patientForm" onsubmit="addPatient(event)">
+                <div class="form-group">
+                  <label for="pName">Patient Full Name</label>
+                  <input type="text" id="pName" class="form-control" placeholder="Enter patient name" required minlength="3">
+                </div>
+
+                <div class="grid-2-col">
+                  <div class="form-group" style="margin-bottom:0;">
+                    <label for="pAge">Age (Years)</label>
+                    <input type="number" id="pAge" class="form-control" placeholder="Age" required min="0" max="120">
+                  </div>
+                  <div class="form-group" style="margin-bottom:0;">
+                    <label for="pGender">Gender</label>
+                    <select id="pGender" class="form-control" required>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="pCase">Emergency Type / Diagnosis</label>
+                  <input type="text" id="pCase" class="form-control" placeholder="e.g. Respiratory Distress" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="pState">Vital Status</label>
+                  <select id="pState" class="form-control" required>
+                    <option value="critical">Critical (Life-threatening)</option>
+                    <option value="semi-critical">Semi-Critical (Moderate)</option>
+                    <option value="stable">Stable (Under Control)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="pUnit">Assigned Transport Unit</label>
+                  <input type="text" id="pUnit" class="form-control" placeholder="e.g. Unit G11 (ALS)" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="pHospital">Destination Hospital</label>
+                  <input type="text" id="pHospital" class="form-control" placeholder="e.g. Apollo Hospital" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Register Patient</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function filterPatients() {
+      const query = document.getElementById('patientSearch').value.toLowerCase();
+      const cards = document.querySelectorAll('.patient-card');
+
+      cards.forEach(card => {
+        const text = card.getAttribute('data-search');
+        if (text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function addPatient(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('pName').value;
+      const age = document.getElementById('pAge').value;
+      const gender = document.getElementById('pGender').value;
+      const caseType = document.getElementById('pCase').value;
+      const state = document.getElementById('pState').value;
+      const unit = document.getElementById('pUnit').value;
+      const hospital = document.getElementById('pHospital').value;
+
+      // Unique random ID
+      const randId = 'P' + Math.floor(10000 + Math.random() * 90000);
+
+      const stateLabel = state.charAt(0).toUpperCase() + state.slice(1);
+
+      const parentWrap = document.getElementById('patientCardsWrap');
+      const card = document.createElement('div');
+      card.className = 'patient-card';
+      card.setAttribute('data-search', `${name} ${randId} ${caseType} ${state}`.toLowerCase());
+
+      card.innerHTML = `
+        <div class="patient-card-header">
+          <div class="patient-name-wrap">
+            <h3>${name}</h3>
+            <span style="font-size:0.75rem; color: var(--gray); font-weight:700;">ID: ${randId}</span>
+          </div>
+          <span class="patient-vital-badge ${state}">${stateLabel}</span>
+        </div>
+        <div class="patient-details-row">
+          <span><strong>Age / Gender:</strong> ${age} / ${gender}</span>
+          <span><strong>Case:</strong> ${caseType}</span>
+        </div>
+        <div class="patient-details-row">
+          <span><strong>Transport Unit:</strong> ${unit}</span>
+          <span><strong>Destination:</strong> ${hospital}</span>
+        </div>
+      `;
+
+      // Prepend
+      parentWrap.insertBefore(card, parentWrap.firstChild);
+
+      // Reset form
+      document.getElementById('patientForm').reset();
+
+      alert('Patient ' + name + ' registered successfully under ID ' + randId);
+      filterPatients();
+    }
+  </script>
+  <!-- Unified JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

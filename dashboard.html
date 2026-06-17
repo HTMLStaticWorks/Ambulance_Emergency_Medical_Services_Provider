@@ -28,33 +28,45 @@
   <div class="dashboard-layout-container">
     <!-- SIDEBAR -->
     <aside class="dashboard-sidebar" id="dashboard-sidebar">
-      <button id="sidebar-close-btn" class="sidebar-close-btn" style="display: none;" aria-label="Close sidebar menu">
+      <button class="sidebar-close-btn" id="sidebar-close-btn" style="display: none;" aria-label="Close sidebar">
         <i class="fa-solid fa-xmark"></i>
       </button>
+      
       <div class="sidebar-profile">
         <div class="profile-img-wrap">
-          <img src="founder_portrait.png" alt="Admin Profile" class="profile-avatar">
+          <img src="founder_portrait.png" alt="Admin Avatar" class="profile-avatar">
         </div>
-        <div class="sidebar-profile-info">
-          <h4 style="margin-bottom: 4px; color: var(--text);">Dr. Alex Mercer</h4>
-          <span style="font-size: 0.8rem; color: var(--gray); font-weight: 600; text-transform: uppercase;">Chief Dispatcher</span>
-        </div>
+        <h4>Admin User</h4>
+        <span>Fleet Director</span>
       </div>
       
       <nav class="sidebar-nav">
-        <a href="#" class="sidebar-link active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
-        <a href="#" class="sidebar-link"><i class="fa-solid fa-satellite-dish"></i> Live Dispatch</a>
-        <a href="#" class="sidebar-link"><i class="fa-solid fa-truck-medical"></i> Fleet Management</a>
-        <a href="#" class="sidebar-link"><i class="fa-solid fa-clipboard-user"></i> Patient Records</a>
-        <a href="#" class="sidebar-link"><i class="fa-solid fa-user-doctor"></i> Staff & Crew</a>
-        <a href="#" class="sidebar-link"><i class="fa-solid fa-file-invoice-dollar"></i> Billing & Invoices</a>
-        <a href="#" class="sidebar-link"><i class="fa-solid fa-chart-pie"></i> Analytics & Reports</a>
-        <a href="#" class="sidebar-link"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="dashboard.html" class="sidebar-link active">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="dashboard-map.html" class="sidebar-link">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Live Map</span>
+        </a>
+        <a href="dashboard-logs.html" class="sidebar-link">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Dispatch Logs</span>
+        </a>
+        <a href="dashboard-patients.html" class="sidebar-link">
+          <i class="fa-solid fa-hospital-user"></i>
+          <span>Patients</span>
+        </a>
+        <a href="dashboard-settings.html" class="sidebar-link">
+          <i class="fa-solid fa-gears"></i>
+          <span>Settings</span>
+        </a>
       </nav>
       
       <div class="sidebar-footer">
-        <button class="btn btn-logout" onclick="alert('Logging out...'); window.location.href='index.html';">
-          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        <button class="btn-logout" onclick="alert('Logging out...'); window.location.href='index.html';">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
         </button>
       </div>
     </aside>
@@ -65,7 +77,7 @@
       <header class="dashboard-bar" style="margin-top: 0;">
     <div class="container dashboard-bar-content">
       <div style="display: flex; align-items: center; gap: 15px;">
-        <button id="dashboard-hamburger-btn" class="hamburger-btn" style="color: var(--white); background: transparent; border: none; font-size: 1.5rem; cursor: pointer; display: none; margin-right: 5px;" aria-label="Toggle sidebar menu">
+        <button id="dashboard-hamburger-btn" class="btn btn-secondary btn-small" style="display: none; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-size: 1.1rem; padding: 6px 12px; border-radius: 4px; cursor: pointer;" aria-label="Open sidebar menu">
           <i class="fa-solid fa-bars"></i>
         </button>
         <a href="index.html" class="logo" style="color: var(--white); font-weight: 700; margin-right: 15px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px;">
