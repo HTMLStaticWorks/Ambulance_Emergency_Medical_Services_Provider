@@ -1848,6 +1848,11 @@ input:checked + .slider-switch:before {
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: var(--red-glow);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .pricing-header {
