@@ -2475,7 +2475,7 @@ textarea.form-control {
 
 .sidebar-link i {
   font-size: 1.1rem;
-  color: var(--gray);
+  color: inherit;
   transition: var(--transition);
 }
 
@@ -2889,21 +2889,7 @@ html[dir="rtl"] body {
   text-align: right;
 }
 
-html[dir="rtl"] .nav-container {
-  flex-direction: row-reverse;
-}
 
-html[dir="rtl"] .logo {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .nav-menu {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .nav-controls {
-  flex-direction: row-reverse;
-}
 
 html[dir="rtl"] .nav-link::after {
   right: 0;
@@ -3095,6 +3081,18 @@ html[dir="rtl"] .form-group-inline {
 
   .contact-form-card {
     padding: 30px 20px !important;
+  }
+
+  /* Fix Contact Page Alignment on Mobile/Tablet */
+  .contact-info-wrap h2,
+  .contact-info-wrap h4,
+  .contact-info-wrap p,
+  .contact-info-wrap a {
+    text-align: start !important;
+  }
+
+  .contact-info-wrap .social-links {
+    justify-content: flex-start !important;
   }
 
   /* Center Split Layouts (Image + Text) */
