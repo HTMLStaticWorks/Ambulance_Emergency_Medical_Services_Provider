@@ -1190,7 +1190,8 @@ body.dark .control-btn:hover {
 }
 
 .form-control {
-  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
   padding: 14px 20px;
   border: 1px solid var(--border);
   border-radius: var(--radius-input);
@@ -2513,13 +2514,18 @@ textarea.form-control {
 
 .dashboard-main-content {
   flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  min-width: 0;
   overflow-x: hidden;
   padding-bottom: 40px;
 }
 
 .dashboard-main-content .container {
   max-width: 100%;
+  width: 100%;
   padding: 0 40px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {
@@ -2598,8 +2604,13 @@ textarea.form-control {
     max-width: 100%;
   }
   
+  .dashboard-main-content {
+    flex-basis: auto;
+    width: 100%;
+  }
+  
   .dashboard-main-content .container {
-    padding: 0 20px;
+    padding: 0 15px;
   }
   
   #dashboard-hamburger-btn {
@@ -2718,11 +2729,21 @@ textarea.form-control {
 
 .password-input-wrap {
   position: relative;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
 }
 
-/* Password strength bar */
+.password-input-wrap .form-control {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .password-strength-wrap {
   margin-top: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .strength-bar-container {
@@ -2854,12 +2875,20 @@ body.dark .btn-social:hover {
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 640px) {
   .signup-grid {
     grid-template-columns: 1fr;
   }
   .form-group-full {
     grid-column: span 1;
+  }
+  .signup-form-card form > .btn {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+  }
+  .signup-form-side {
+    padding: 30px 18px;
   }
 }
 
@@ -3397,3 +3426,134 @@ html[dir="rtl"] .form-group-inline {
   }
 }
 
+/* ==========================================================================
+   Responsive Utilities & Table Overflows
+   ========================================================================== */
+
+/* Responsive horizontal scroll wrapper for tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 15px;
+}
+
+/* Minimize table spacing on mobile screens to save layout width */
+@media (max-width: 768px) {
+  .comparison-table th, .comparison-table td {
+    padding: 12px 14px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Responsive two-column grid utility */
+.grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 576px) {
+  .grid-2-col {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* ==========================================================================
+   Dashboard Mobile Overflow — Comprehensive Containment Fixes
+   ========================================================================== */
+
+/* Force ALL children inside dashboard to respect box model */
+.dashboard-layout-container *,
+.dashboard-layout-container *::before,
+.dashboard-layout-container *::after {
+  box-sizing: border-box;
+}
+
+/* Prevent grid children from overflowing their cells */
+.logs-layout-grid > *,
+.settings-grid > *,
+.patients-layout-grid > *,
+.map-dashboard-grid > * {
+  min-width: 0;
+}
+
+/* Keep form controls fully inside their parent */
+.dashboard-main-content .form-control {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make dashboard top bar wrap on small screens */
+.dashboard-bar .dashboard-bar-content {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Dashboard header title - shrink font on mobile */
+@media (max-width: 600px) {
+  .dashboard-bar .dashboard-bar-content h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .dashboard-bar .dashboard-bar-content .logo {
+    font-size: 1rem !important;
+  }
+
+  .dashboard-time {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .dash-clock {
+    font-size: 0.85rem;
+  }
+
+  /* Stack dashboard action buttons */
+  .dashboard-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Reduce logs/settings card padding */
+  .logs-card,
+  .settings-nav-card,
+  .settings-content-card,
+  .live-map-card,
+  .telemetry-card {
+    padding: 15px !important;
+  }
+
+  /* Allow search input to fill full width */
+  .search-input-wrap {
+    max-width: 100% !important;
+    width: 100%;
+  }
+
+  /* Stack filter pills */
+  .map-filter-bar {
+    gap: 6px;
+  }
+
+  .filter-pill {
+    font-size: 0.78rem;
+    padding: 5px 10px;
+  }
+
+  /* Patient cards always single column on phones */
+  .patient-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Patient detail rows wrap on small screens */
+  .patient-details-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  /* Action grid buttons - 1 column */
+  .action-grid-buttons {
+    grid-template-columns: 1fr !important;
+  }
+}
